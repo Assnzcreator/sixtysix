@@ -529,6 +529,115 @@ document.addEventListener('DOMContentLoaded', () => {
     updateScrollProgress();
     handleScrollTopBtn();
 
+    // 12. Active Solutions Showcase Live Mockup Animations
+    
+    // -- Delivery Mockup Animation --
+    const deliveryOrderList = document.querySelector('.delivery-order-list');
+    const deliveryOrders = [
+        { name: '#1045 - Smash Burger Duplo', status: 'Recebido', class: 'recebido' },
+        { name: '#1046 - Pizza Quatro Queijos', status: 'Preparando', class: 'preparando' },
+        { name: '#1047 - Combo Família Super', status: 'Recebido', class: 'recebido' },
+        { name: '#1048 - Wrap de Frango + Suco', status: 'Preparando', class: 'preparando' },
+        { name: '#1049 - Milkshake Chocolate', status: 'Recebido', class: 'recebido' }
+    ];
+    let deliveryOrderIdx = 0;
+    let totalOrders = 142;
+    let totalRevenue = 8200;
+
+    const animateDelivery = () => {
+        if (!deliveryOrderList) return;
+
+        // Count up stats randomly to simulate real activity
+        totalOrders += 1;
+        totalRevenue += parseFloat((Math.random() * 20 + 10).toFixed(2));
+        
+        const orderStat = document.querySelector('.stat-box:nth-child(1) .stat-val');
+        const revStat = document.querySelector('.stat-box:nth-child(2) .stat-val');
+        
+        if (orderStat) orderStat.textContent = totalOrders;
+        if (revStat) revStat.textContent = `R$ ${(totalRevenue / 1000).toFixed(1)}k`;
+
+        // Cycle through dynamic order database
+        const nextOrder = deliveryOrders[deliveryOrderIdx];
+        deliveryOrderIdx = (deliveryOrderIdx + 1) % deliveryOrders.length;
+
+        // Create new order row
+        const newRow = document.createElement('div');
+        newRow.className = 'order-row new-order';
+        newRow.innerHTML = `
+            <span>${nextOrder.name}</span>
+            <span class="order-status-badge ${nextOrder.class}">${nextOrder.status}</span>
+        `;
+
+        // Insert at top of list
+        deliveryOrderList.insertBefore(newRow, deliveryOrderList.firstChild);
+
+        // Limit list size to 3 rows
+        const currentRows = deliveryOrderList.querySelectorAll('.order-row');
+        if (currentRows.length > 3) {
+            deliveryOrderList.removeChild(currentRows[currentRows.length - 1]);
+        }
+
+        // Periodically upgrade status badges from 'Recebido' -> 'Preparando' -> 'Entregue'
+        setTimeout(() => {
+            const badges = deliveryOrderList.querySelectorAll('.order-status-badge');
+            if (badges[0] && badges[0].classList.contains('recebido')) {
+                badges[0].classList.remove('recebido');
+                badges[0].classList.add('preparando');
+                badges[0].textContent = 'Preparando';
+            }
+            if (badges[1] && badges[1].classList.contains('preparando')) {
+                badges[1].classList.remove('preparando');
+                badges[1].classList.add('entregue');
+                badges[1].textContent = 'Entregue';
+                badges[1].style.background = 'rgba(255,255,255,0.05)';
+                badges[1].style.color = 'var(--text-muted)';
+            }
+        }, 2200);
+    };
+
+    // Run delivery updates every 4.5 seconds
+    setInterval(animateDelivery, 4500);
+
+    // -- AI Agents Flow Mockup Animation --
+    const iaFlowSteps = document.querySelectorAll('.ia-agent-visual .flow-step');
+    let iaStepIdx = 0;
+
+    const animateIAFlow = () => {
+        if (!iaFlowSteps || iaFlowSteps.length === 0) return;
+
+        iaFlowSteps.forEach(step => step.classList.remove('active'));
+        
+        // Activate current step
+        iaFlowSteps[iaStepIdx].classList.add('active');
+        
+        // Move to next step or reset
+        iaStepIdx = (iaStepIdx + 1) % iaFlowSteps.length;
+    };
+
+    // Cycle steps every 1.8 seconds for an engaging processing loop
+    setInterval(animateIAFlow, 1800);
+    animateIAFlow(); // initial run
+
+    // -- Custom SaaS Chart Mockup Animation --
+    const chartBars = document.querySelectorAll('#pane-custom .chart-bar');
+    
+    const animateChart = () => {
+        if (!chartBars || chartBars.length === 0) return;
+
+        chartBars.forEach(bar => {
+            // Generate subtle fluctuation around the original value
+            const randomVal = Math.floor(Math.random() * 30) + 40; // values between 40% and 70%
+            bar.style.height = `${randomVal}%`;
+        });
+    };
+
+    // Fluctuate chart bars every 2.5 seconds
+    setInterval(animateChart, 2500);
+    animateChart(); // initial run
+
+
+
     // 11. Mobile Touch Feedback System
     // Enables ultra-responsive active states on mobile touch screens
     document.body.addEventListener('touchstart', () => {}, {passive: true});

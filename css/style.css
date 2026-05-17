@@ -433,7 +433,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 2px;
     font-family: var(--font-heading);
     font-size: 1.6rem;
     font-weight: 800;
@@ -442,8 +442,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-img {
     height: 54px;
-    width: auto;
-    object-fit: contain;
+    width: auto; margin-right: -4px; object-fit: contain;
     transition: transform var(--transition-fast);
 }
 
@@ -495,7 +494,7 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-toggle {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 2px;
     cursor: pointer;
     width: 24px;
     z-index: 110;
@@ -1519,7 +1518,51 @@ h1, h2, h3, h4, h5, h6 {
     flex-grow: 1;
     background: linear-gradient(0deg, var(--primary-dark) 0%, var(--primary) 100%);
     border-radius: 4px 4px 0 0;
-    transition: height var(--transition-slow);
+    transition: height 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+/* Solutions Mockup Animation Styling */
+.flow-step {
+    transition: all var(--transition-smooth);
+}
+.flow-step.active {
+    background: rgba(0, 217, 139, 0.08);
+    border-color: rgba(0, 217, 139, 0.4);
+    box-shadow: 0 0 15px rgba(0, 217, 139, 0.1);
+    transform: scale(1.02);
+}
+.flow-step.active .step-num {
+    box-shadow: 0 0 12px var(--primary-glow);
+}
+
+@keyframes slideInOrder {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.order-row.new-order {
+    animation: slideInOrder var(--transition-smooth) forwards;
+}
+
+.order-status-badge {
+    transition: all var(--transition-fast);
+}
+.order-status-badge.preparando {
+    background: rgba(0, 217, 139, 0.1);
+    color: var(--primary-light);
+}
+.order-status-badge.recebido {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+.order-status-badge.entregue {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
 }
 
 /* 9. How We Work (The Process) */
@@ -2016,7 +2059,7 @@ textarea.form-control {
     }
 
     .calendar-days {
-        gap: 6px;
+        gap: 2px;
     }
 
     .day-btn {
