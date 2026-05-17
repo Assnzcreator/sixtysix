@@ -551,6 +551,27 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
         text-align: center;
     }
+
+    /* Disable scroll capture inside the chat widget on mobile */
+    .hero-visual {
+        pointer-events: none;
+    }
+
+    .agent-chat-window {
+        height: 300px;
+        pointer-events: none;
+    }
+
+    .chat-body {
+        overflow: hidden;
+        touch-action: none;
+        pointer-events: none;
+    }
+
+    /* Hide floating card that overflows on mobile */
+    .agent-card-float {
+        display: none;
+    }
 }
 
 .hero-content {
