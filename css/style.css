@@ -546,6 +546,53 @@ h1, h2, h3, h4, h5, h6 {
     background: radial-gradient(circle, rgba(0, 166, 105, 0.08) 0%, rgba(0,0,0,0) 70%);
 }
 
+/* Dot grid — canto superior direito do hero com fade radial */
+.hero-dots {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 560px;
+    height: 560px;
+    /* Padrão de pontos usando radial-gradient repetido */
+    background-image: radial-gradient(
+        circle,
+        rgba(0, 217, 139, 0.35) 1px,
+        transparent 1px
+    );
+    background-size: 28px 28px;
+    /* Fade radial saindo do canto superior direito */
+    -webkit-mask-image: radial-gradient(
+        ellipse 80% 80% at 100% 0%,
+        black 0%,
+        black 30%,
+        transparent 75%
+    );
+    mask-image: radial-gradient(
+        ellipse 80% 80% at 100% 0%,
+        black 0%,
+        black 30%,
+        transparent 75%
+    );
+    pointer-events: none;
+    z-index: 1;
+    /* Animação sutil de pulso para dar vida */
+    animation: dotsPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes dotsPulse {
+    0%   { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* Ocultar em mobile para não poluir */
+@media (max-width: 768px) {
+    .hero-dots {
+        width: 280px;
+        height: 280px;
+        opacity: 0.5;
+    }
+}
+
 .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
