@@ -546,59 +546,44 @@ h1, h2, h3, h4, h5, h6 {
     background: radial-gradient(circle, rgba(0, 166, 105, 0.08) 0%, rgba(0,0,0,0) 70%);
 }
 
-/* Dot grid — container posicionado no canto superior direito */
+/* Dot grid - base compartilhada */
 .hero-dots {
     position: absolute;
     top: -80px;
-    right: -40px;
-    width: 65%;
+    width: 42%;
     height: 130%;
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
-    /* Fade radial saindo do canto: denso no canto, some em direção ao centro */
+}
+
+/* Lado esquerdo: fade dissolve em direcao ao centro */
+.hero-dots-left {
+    left: -20px;
     -webkit-mask-image: radial-gradient(
-        ellipse 95% 90% at 100% 5%,
-        black 0%,
-        black 20%,
-        rgba(0, 0, 0, 0.55) 50%,
-        transparent 78%
+        ellipse 95% 90% at 0% 10%,
+        black 0%, black 20%,
+        rgba(0,0,0,0.5) 55%,
+        transparent 80%
     );
     mask-image: radial-gradient(
-        ellipse 95% 90% at 100% 5%,
-        black 0%,
-        black 20%,
-        rgba(0, 0, 0, 0.55) 50%,
-        transparent 78%
+        ellipse 95% 90% at 0% 10%,
+        black 0%, black 20%,
+        rgba(0,0,0,0.5) 55%,
+        transparent 80%
     );
 }
 
-/* Cada ponto individual gerado pelo JS */
-.hero-dot-particle {
-    position: absolute;
-    width: 2.5px;
-    height: 2.5px;
-    border-radius: 50%;
-    background: rgba(0, 217, 139, 1);
-    box-shadow: 0 0 5px rgba(0, 217, 139, 0.7), 0 0 10px rgba(0, 217, 139, 0.3);
-    animation: twinkleDot var(--dur, 3s) ease-in-out infinite alternate;
-    animation-delay: var(--delay, 0s);
-}
+/* Lado direito: escondido */
+.hero-dots-right { display: none; }
 
-@keyframes twinkleDot {
-    0%   { opacity: 0.08; transform: scale(0.8); }
-    100% { opacity: 0.85; transform: scale(1.4); }
-}
-
-/* Mobile: container menor */
 @media (max-width: 768px) {
-    .hero-dots {
-        width: 90%;
-        height: 70%;
-        opacity: 0.5;
+    .hero-dots-left {
+        width: 70%;
+        height: 60%;
+        opacity: 0.4;
     }
 }
-
 .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
