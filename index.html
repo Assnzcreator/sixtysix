@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SixtySix - Software house premium especializada em automações com agentes de IA e desenvolvimento de sistemas e aplicativos sob medida. Automação inteligente. Software sob medida.">
+    <meta name="keywords" content="agentes de ia, automação residencial, automação comercial, chatbot whatsapp, rpa, software sob medida, erp personalizado, crm personalizado, delivery, nota fiscal eletronica, nfe, sixtysix">
+    <meta name="author" content="SixtySix">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sixtysix.com.br/">
+    <meta property="og:title" content="SixtySix | Automação Inteligente e Software Sob Medida">
+    <meta property="og:description" content="Dê escala à sua operação com agentes de IA inteligentes e sistemas desenvolvidos sob medida para o seu negócio. Conheça nossas soluções.">
+    <meta property="og:image" content="assets/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://sixtysix.com.br/">
+    <meta property="twitter:title" content="SixtySix | Automação Inteligente e Software Sob Medida">
+    <meta property="twitter:description" content="Dê escala à sua operação com agentes de IA inteligentes e sistemas desenvolvidos sob medida para o seu negócio. Conheça nossas soluções.">
+    <meta property="twitter:image" content="assets/og-image.png">
+
+    <title>SixtySix | Automação Inteligente & Software Sob Medida</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css?v=2.4">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Ambient glows -->
+    <div class="ambient-glow hero-glow-1"></div>
+    <div class="ambient-glow hero-glow-2"></div>
+
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="#home" class="logo">
+                <img src="logo.png" class="logo-img" alt="SixtySix Logo">
+                <span>SIXTY<span class="sketch-highlight navbar-sketch" style="color: var(--primary-light);">SIX<svg class="sketch-svg" viewBox="0 0 150 50" preserveAspectRatio="none"><path d="M 5 25 C 20 5, 130 0, 145 20 C 150 35, 20 48, 8 45 C 2 43, 5 30, 25 22" stroke="var(--primary-light)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></span>
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active">Início</a>
+                <a href="#solucoes" class="nav-link">Soluções</a>
+                <a href="#processo" class="nav-link">Como Trabalhamos</a>
+                <a href="#sobre" class="nav-link">Sobre Nós</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            
+            <div class="nav-actions">
+                <a href="#contato" class="btn btn-secondary" style="padding: 10px 20px; font-size: 0.85rem;">Fale com a gente</a>
+            </div>
+
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                
+                <!-- Left Content -->
+                <div class="hero-content reveal">
+                    <div class="badge-tag">
+                        <span class="dot"></span>
+                        <span>Agentes de IA & Software Premium</span>
+                    </div>
+                    <h1 class="hero-title">
+                        O futuro da <span class="gradient-text-alt">automação</span>.<br>
+                        O software da sua <span class="gradient-text">escala</span>.
+                    </h1>
+                    <p class="hero-desc">
+                        Ajudamos empresas a eliminar gargalos operacionais e crescer de forma inteligente com automações autônomas e sistemas desenhados sob medida para o seu negócio.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#contato" class="btn btn-primary">
+                            Fale com a gente
+                            <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+                        </a>
+                        <a href="#solucoes" class="btn btn-secondary">Conhecer Soluções</a>
+                    </div>
+                </div>
+
+                <!-- Right Visual: Interactive AI Chatbot Simulator (Telegram/WhatsApp Style) -->
+                <div class="hero-visual reveal reveal-delay-2">
+                    <div class="agent-chat-window">
+                        <div class="chat-header">
+                            <div class="chat-header-info">
+                                <div class="chat-avatar">
+                                    <div class="chat-avatar-glow"></div>
+                                    <i data-lucide="bot" style="width: 16px; height: 16px; color: var(--primary);"></i>
+                                </div>
+                                <div class="chat-user-details">
+                                    <span class="chat-username">SixtySix AI</span>
+                                    <span class="chat-status"><span class="status-dot"></span>Online</span>
+                                </div>
+                            </div>
+                            <div class="chat-header-actions">
+                                <i data-lucide="phone" class="chat-icon"></i>
+                                <i data-lucide="video" class="chat-icon"></i>
+                                <i data-lucide="more-vertical" class="chat-icon"></i>
+                            </div>
+                        </div>
+                        <div class="chat-body" id="chatBody">
+                            <div class="chat-system-badge">
+                                <span>Hoje</span>
+                            </div>
+                            <div class="chat-system-badge">
+                                <span>[SIXTYSIX-CHAT] Agente de atendimento ativo na API WhatsApp.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Agent Card -->
+                    <div class="agent-card-float">
+                        <div class="agent-avatar">
+                            <i data-lucide="cpu" style="width: 16px; height: 16px;"></i>
+                        </div>
+                        <div class="agent-info">
+                            <div class="agent-name">Assistente Autônomo</div>
+                            <div class="agent-status">Executando fluxos</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Differentials Section -->
+    <section class="differentials section-padding" id="diferenciais">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-tag">Diferenciais</span>
+                <h2 class="section-title">Por que a <span class="sketch-highlight">SixtySix<svg class="sketch-svg" viewBox="0 0 150 50" preserveAspectRatio="none"><path d="M 5 25 C 20 5, 130 0, 145 20 C 150 35, 20 48, 8 45 C 2 43, 5 30, 25 22" stroke="var(--primary-light)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>?</h2>
+                <p class="section-desc">Criamos ativos digitais que se adaptam exatamente aos seus fluxos de trabalho, garantindo máxima eficiência.</p>
+            </div>
+            
+            <div class="differentials-grid">
+                
+                <!-- Card 1 -->
+                <div class="glass-card diff-card reveal">
+                    <div class="diff-icon">
+                        <i data-lucide="sliders"></i>
+                    </div>
+                    <h3 class="diff-title">Sob Medida</h3>
+                    <p class="diff-desc">Nada de templates prontos. Desenvolvemos soluções do zero, focadas nas dores e metas específicas do seu negócio.</p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card diff-card reveal reveal-delay-1">
+                    <div class="diff-icon">
+                        <i data-lucide="brain-circuit"></i>
+                    </div>
+                    <h3 class="diff-title">Agentes de IA</h3>
+                    <p class="diff-desc">Integramos inteligência artificial de ponta capaz de tomar decisões estruturadas, analisar dados e vender de forma automatizada.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card diff-card reveal reveal-delay-2">
+                    <div class="diff-icon">
+                        <i data-lucide="git-merge"></i>
+                    </div>
+                    <h3 class="diff-title">Integração Total</h3>
+                    <p class="diff-desc">Sistemas que conversam perfeitamente com as ferramentas que você já usa (CRMs, ERPs, bancos de dados e APIs).</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="glass-card diff-card reveal reveal-delay-3">
+                    <div class="diff-icon">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <h3 class="diff-title">Suporte Contínuo</h3>
+                    <p class="diff-desc">Acompanhamos a evolução do seu sistema com suporte dedicado, manutenção preventiva e atualizações contínuas.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Showcase Section -->
+    <section class="solutions section-padding" id="solucoes">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-tag">Soluções</span>
+                <h2 class="section-title">Uma suíte de <span class="sketch-highlight">soluções<svg class="sketch-svg" viewBox="0 0 150 50" preserveAspectRatio="none"><path d="M 5 25 C 20 5, 130 0, 145 20 C 150 35, 20 48, 8 45 C 2 43, 5 30, 25 22" stroke="var(--primary-light)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span> para o seu negócio.</h2>
+                <p class="section-desc">Softwares de alto nível e automações inteligentes desenhados para otimizar e escalar a sua empresa.</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="solutions-nav reveal">
+                <button class="sol-tab active" data-tab="delivery">Plataforma de Delivery</button>
+                <button class="sol-tab" data-tab="ia">Agentes de IA</button>
+                <button class="sol-tab" data-tab="custom">Software Sob Medida</button>
+            </div>
+
+            <!-- Tab Panes Content -->
+            <div class="sol-content-wrapper reveal reveal-delay-1">
+                
+                <!-- Pane 1: Delivery Platform -->
+                <div class="sol-pane active" id="pane-delivery">
+                    <div class="sol-details">
+                        <h3 class="sol-title">Plataforma de Delivery Completa</h3>
+                        <p class="sol-description">
+                            Um ecossistema robusto projetado para o mercado de alimentação, eliminando intermediários e taxas abusivas de aplicativos terceiros. Controle total do seu faturamento e base de clientes.
+                        </p>
+                        <div class="sol-features">
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Gestão de pedidos em tempo real</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Emissão de NF-e integrada</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Meios de pagamento (Pix / Cartão)</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Aplicativo dedicado para entregadores</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Dashboard administrativo</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Cardápio digital customizável</span>
+                            </div>
+                        </div>
+                        <a href="#contato" class="btn btn-primary">Quero esse software</a>
+                    </div>
+                    
+                    <div class="sol-visual-container">
+                        <div class="app-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-title">dashboard_delivery.dashboard</span>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="delivery-grid">
+                                    <div class="delivery-sidebar">
+                                        <div class="sidebar-item active"></div>
+                                        <div class="sidebar-item"></div>
+                                        <div class="sidebar-item"></div>
+                                        <div class="sidebar-item"></div>
+                                    </div>
+                                    <div class="delivery-main">
+                                        <div class="delivery-stats">
+                                            <div class="stat-box">
+                                                <div class="stat-label">Pedidos Hoje</div>
+                                                <div class="stat-val">142</div>
+                                            </div>
+                                            <div class="stat-box">
+                                                <div class="stat-label">Faturamento</div>
+                                                <div class="stat-val">R$ 8,2k</div>
+                                            </div>
+                                            <div class="stat-box">
+                                                <div class="stat-label">Ticket Médio</div>
+                                                <div class="stat-val">R$ 57,80</div>
+                                            </div>
+                                        </div>
+                                        <div class="delivery-order-list">
+                                            <div class="order-row">
+                                                <span>#1042 - Combo Premium</span>
+                                                <span class="order-status-badge">Preparando</span>
+                                            </div>
+                                            <div class="order-row">
+                                                <span>#1041 - Pizza Margherita + Suco</span>
+                                                <span class="order-status-badge">Entregue</span>
+                                            </div>
+                                            <div class="order-row">
+                                                <span>#1040 - Burguer Duplo Cheddar</span>
+                                                <span class="order-status-badge">Entregue</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pane 2: AI Agents -->
+                <div class="sol-pane" id="pane-ia">
+                    <div class="sol-details">
+                        <h3 class="sol-title">Automações com Agentes de IA</h3>
+                        <p class="sol-description">
+                            Substitua rotinas manuais repetitivas por agentes de inteligência artificial autônomos. Nossos robôs são capazes de gerenciar chats de vendas, criar relatórios de mercado, preencher ERPs e realizar ações complexas de back-office.
+                        </p>
+                        <div class="sol-features">
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Bots de vendas (WhatsApp/Web/Email)</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Agentes analistas de dados em tempo real</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>RPA Inteligente + LLMs de ponta</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Integração de IA com ERPs e CRMs</span>
+                            </div>
+                        </div>
+                        <a href="#contato" class="btn btn-primary">Automatizar minha operação</a>
+                    </div>
+                    
+                    <div class="sol-visual-container">
+                        <div class="app-mockup" style="max-width: 480px; width: 100%;">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-title">fluxo_agente_ia.exec</span>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="ia-agent-visual">
+                                    <div class="flow-step">
+                                        <div class="step-num">1</div>
+                                        <div class="step-text">Gatilho: Novo lead recebido</div>
+                                        <span class="step-meta">Capturado</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <div class="step-num">2</div>
+                                        <div class="step-text">IA: Enquadramento & Qualificação</div>
+                                        <span class="step-meta">Processado</span>
+                                    </div>
+                                    <div class="flow-step">
+                                        <div class="step-num">3</div>
+                                        <div class="step-text">Ação: Agendar Reunião no CRM</div>
+                                        <span class="step-meta" style="color: var(--primary-light);">Sucesso</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pane 3: Custom Software -->
+                <div class="sol-pane" id="pane-custom">
+                    <div class="sol-details">
+                        <h3 class="sol-title">Desenvolvimento de Software Sob Medida</h3>
+                        <p class="sol-description">
+                            Criamos do zero sistemas robustos de gestão e plataformas digitais com foco em performance e escalabilidade técnica. Código limpo, tecnologias modernas e documentação completa.
+                        </p>
+                        <div class="sol-features">
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Sistemas de Gestão (ERP, CRM, HRM)</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Plataformas SaaS Customizadas</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Criação de APIs e Integrações</span>
+                            </div>
+                            <div class="sol-feature-item">
+                                <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i>
+                                <span>Desenvolvimento Mobile e Web Premium</span>
+                            </div>
+                        </div>
+                        <a href="#contato" class="btn btn-primary">Iniciar meu projeto</a>
+                    </div>
+                    
+                    <div class="sol-visual-container">
+                        <div class="app-mockup">
+                            <div class="mockup-header">
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-dot"></span>
+                                <span class="mockup-title">custom_saas_metrics.system</span>
+                            </div>
+                            <div class="mockup-body">
+                                <div class="custom-system-mockup">
+                                    <div class="system-card">
+                                        <div class="sys-header">
+                                            <span class="sys-title">Retenção de Usuários</span>
+                                            <span class="sys-tag">+12.4%</span>
+                                        </div>
+                                        <div class="sys-bar-chart" id="customSaasChart">
+                                            <div class="chart-bar" style="height: 30%"></div>
+                                            <div class="chart-bar" style="height: 45%"></div>
+                                            <div class="chart-bar" style="height: 40%"></div>
+                                            <div class="chart-bar" style="height: 60%"></div>
+                                            <div class="chart-bar" style="height: 75%"></div>
+                                            <div class="chart-bar" style="height: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="process section-padding" id="processo">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-tag">Metodologia</span>
+                <h2 class="section-title">Como Trabalhamos</h2>
+                <p class="section-desc">Do diagnóstico inicial ao acompanhamento contínuo pós-implantação. Garantimos um fluxo claro, ágil e focado em resultados.</p>
+            </div>
+
+            <div class="process-timeline reveal reveal-delay-1">
+                
+                <!-- Step 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i data-lucide="search"></i>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-step-num">Etapa 01</div>
+                        <h3 class="timeline-title">Diagnóstico e Imersão</h3>
+                        <p class="timeline-desc">Analisamos detalhadamente a sua operação atual, identificamos gargalos e oportunidades claras de automação ou inovação digital sob medida.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i data-lucide="file-text"></i>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-step-num">Etapa 02</div>
+                        <h3 class="timeline-title">Proposta Estruturada</h3>
+                        <p class="timeline-desc">Apresentamos um plano de ação completo com arquitetura de soluções, prazos, orçamento transparente e retorno estimado do investimento (ROI).</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i data-lucide="code-2"></i>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-step-num">Etapa 03</div>
+                        <h3 class="timeline-title">Desenvolvimento Ágil</h3>
+                        <p class="timeline-desc">Escrevemos código limpo utilizando as ferramentas mais modernas do mercado. Você acompanha a evolução do projeto através de entregas em ambiente de homologação.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i data-lucide="rocket"></i>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-step-num">Etapa 04</div>
+                        <h3 class="timeline-title">Implantação e Treinamento</h3>
+                        <p class="timeline-desc">Colocamos a solução no ar com total segurança. Cuidamos de integrações de dados, servidores, e capacitamos a sua equipe para operar as novas ferramentas.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <i data-lucide="life-buoy"></i>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-step-num">Etapa 05</div>
+                        <h3 class="timeline-title">Suporte e Evolução</h3>
+                        <p class="timeline-desc">A entrega é apenas o início. Acompanhamos o uso diário, oferecemos suporte técnico contínuo e evoluímos as ferramentas conforme a demanda de escala da sua empresa.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about section-padding" id="sobre">
+        <div class="container">
+            <div class="about-grid">
+                
+                <!-- Left: Texts -->
+                <div class="about-text reveal">
+                    <span class="section-tag">Sobre a SixtySix</span>
+                    <h3>Criamos pontes de código entre ideias e lucros operacionais.</h3>
+                    <p>
+                        Nascemos com o propósito de redefinir o desenvolvimento de software corporativo. Na **SixtySix**, acreditamos que a tecnologia deve ser um acelerador direto de faturamento e produtividade, e não uma fonte constante de bugs e frustrações.
+                    </p>
+                    <p>
+                        Nossa equipe une engenharia de software avançada com profunda expertise em algoritmos e agentes de IA para desenhar sistemas escaláveis, performáticos e intuitivos. Do pequeno negócio em expansão à média empresa que necessita de automação pesada, entregamos o rigor técnico das grandes big techs.
+                    </p>
+                </div>
+
+                <!-- Right: Vision Cards -->
+                <div class="reveal reveal-delay-2">
+                    <div class="about-values">
+                        <div class="glass-card value-card">
+                            <i data-lucide="milestone" style="width: 24px; height: 24px;"></i>
+                            <h4 class="value-title">Missão</h4>
+                            <p class="value-desc">Transformar tecnologia sob medida em eficiência operacional e lucros escaláveis para nossos parceiros.</p>
+                        </div>
+                        <div class="glass-card value-card">
+                            <i data-lucide="eye" style="width: 24px; height: 24px;"></i>
+                            <h4 class="value-title">Visão</h4>
+                            <p class="value-desc">Ser reconhecida como a software house mais inovadora em automações corporativas com IA na América Latina.</p>
+                        </div>
+                        <div class="glass-card value-card">
+                            <i data-lucide="gem" style="width: 24px; height: 24px;"></i>
+                            <h4 class="value-title">Valores</h4>
+                            <p class="value-desc">Rigor de engenharia, foco absoluto no cliente, inovação ética e honestidade intelectual extrema.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Final CTA Section -->
+    <section class="contact section-padding" id="contato">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-tag">Contato</span>
+                <h2 class="section-title">Vamos <span class="sketch-highlight">acelerar<svg class="sketch-svg" viewBox="0 0 150 50" preserveAspectRatio="none"><path d="M 5 25 C 20 5, 130 0, 145 20 C 150 35, 20 48, 8 45 C 2 43, 5 30, 25 22" stroke="var(--primary-light)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span> o seu negócio?</h2>
+                <p class="section-desc">Entre em contato direto conosco ou agende uma reunião estratégica agora mesmo para desenharmos sua solução.</p>
+            </div>
+
+            <div class="contact-grid">
+                
+                <!-- Left: Contact info -->
+                <div class="contact-info reveal">
+                    <div class="contact-details">
+                        
+                        <!-- Card 1 -->
+                        <div class="glass-card contact-card">
+                            <div class="contact-icon">
+                                <i data-lucide="message-square" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <div>
+                                <span class="contact-label">WhatsApp</span>
+                                <div class="contact-val">
+                                    <a href="https://wa.me/5581992376036" target="_blank" style="color: var(--primary-light); hover: color: #fff;">+55 (81) 99237-6036</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="glass-card contact-card">
+                            <div class="contact-icon">
+                                <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <div>
+                                <span class="contact-label">E-mail Comercial</span>
+                                <div class="contact-val">contato@sixtysix.com.br</div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="glass-card contact-card">
+                            <div class="contact-icon">
+                                <i data-lucide="map-pin" style="width: 20px; height: 20px;"></i>
+                            </div>
+                            <div>
+                                <span class="contact-label">Sede</span>
+                                <div class="contact-val">São Paulo - SP (Atendimento Remoto Global)</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <p style="color: var(--text-dimmed); font-size: 0.85rem; line-height: 1.5; padding: 0 10px;">
+                        * Respondemos e-mails e contatos via WhatsApp comercial em no máximo 2 horas durante dias úteis das 09:00 às 18:00.
+                    </p>
+                </div>
+
+                <!-- Right: Form and interactive scheduler -->
+                <div class="glass-card contact-form-wrapper reveal reveal-delay-2">
+                    <form class="contact-form" id="contactForm">
+                        
+                        <!-- Name & Email -->
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="name">Nome completo</label>
+                                <input type="text" id="name" class="form-control" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail corporativo</label>
+                                <input type="email" id="email" class="form-control" placeholder="voce@empresa.com" required>
+                            </div>
+                        </div>
+
+                        <!-- Phone & Need -->
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="phone">Celular/WhatsApp</label>
+                                <input type="tel" id="phone" class="form-control" placeholder="(11) 99999-9999" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="solution">O que você precisa?</label>
+                                <select id="solution" class="form-control" required style="appearance: none; background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23a1a1aa%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'); background-repeat: no-repeat; background-position: right 16px top 50%; background-size: 10px auto; padding-right: 40px;">
+                                    <option value="" disabled selected>Selecione uma opção</option>
+                                    <option value="delivery">Plataforma de Delivery</option>
+                                    <option value="ia">Automações com IA</option>
+                                    <option value="custom">Sistemas / Software Sob Medida</option>
+                                    <option value="other">Outra necessidade técnica</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Mini-Scheduler Widget -->
+                        <div class="scheduler-widget">
+                            <div class="scheduler-title">
+                                <i data-lucide="calendar-check" style="width: 18px; height: 18px;"></i>
+                                <span>Agende uma conversa estratégica de 15 minutos</span>
+                            </div>
+                            
+                            <!-- Calendar selector -->
+                            <div class="calendar-days" id="calendarDays">
+                                <!-- Days are dynamically generated by JS -->
+                            </div>
+
+                            <!-- Time slots -->
+                            <div class="time-slots" id="timeSlots">
+                                <!-- Slots are dynamically generated by JS -->
+                            </div>
+                            
+                            <input type="hidden" id="selectedDate" value="">
+                            <input type="hidden" id="selectedTime" value="">
+                        </div>
+
+                        <!-- Message -->
+                        <div class="form-group">
+                            <label for="message">Mensagem ou Breve descrição</label>
+                            <textarea id="message" class="form-control" placeholder="Conte brevemente sobre o seu projeto..." required></textarea>
+                        </div>
+
+                        <!-- Feedback Success Alert -->
+                        <div class="form-feedback" id="formFeedback">
+                            <i data-lucide="check-circle-2" style="width: 24px; height: 24px; flex-shrink: 0;"></i>
+                            <span>Mensagem enviada com sucesso! Em breve um especialista entrará em contato.</span>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn btn-primary" style="width: 100%;" id="submitBtn">
+                            Solicitar orçamento e confirmar reunião
+                            <i data-lucide="send" style="width: 16px; height: 16px;"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                
+                <!-- Brand block -->
+                <div class="footer-brand">
+                    <a href="#home" class="logo" style="margin-bottom: 12px;">
+                        <img src="logo.png" class="logo-img" alt="SixtySix Logo">
+                        <span>SIXTY <span style="color: var(--primary-light)">SIX</span></span>
+                    </a>
+                    <p>Automação inteligente. Software sob medida. Dê escala digital aos seus processos operacionais com engenharia de alto nível.</p>
+                </div>
+
+                <!-- Pages block -->
+                <div>
+                    <h4 class="footer-links-title">Navegação</h4>
+                    <div class="footer-links-list">
+                        <a href="#home">Início</a>
+                        <a href="#solucoes">Soluções</a>
+                        <a href="#processo">Como Trabalhamos</a>
+                        <a href="#sobre">Sobre Nós</a>
+                    </div>
+                </div>
+
+                <!-- Solutions block -->
+                <div>
+                    <h4 class="footer-links-title">Soluções</h4>
+                    <div class="footer-links-list">
+                        <a href="#solucoes">Plataforma de Delivery</a>
+                        <a href="#solucoes">Automações com IA</a>
+                        <a href="#solucoes">Software Sob Medida</a>
+                        <a href="#contato">Solicitar Diagnóstico</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <span>&copy; 2026 SixtySix. Todos os direitos reservados. CNPJ: 00.000.000/0000-00.</span>
+                <span>Desenhado para performance máxima.</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lucide Icons UMD Build -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Scroll-To-Top Button -->
+    <button class="scroll-to-top" id="scrollTopBtn" aria-label="Voltar ao topo">
+        <i data-lucide="chevron-up"></i>
+    </button>
+
+    <!-- Custom Scripts -->
+    <script src="js/main.js?v=2.4"></script>
+</body>
+</html>
