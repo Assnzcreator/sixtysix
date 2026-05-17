@@ -4,6 +4,30 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
+    // 2. Click zoom effect nos icones de servicos
+    const triggerZoom = (el) => {
+        if (!el) return;
+        el.classList.remove('click-zoom');
+        void el.offsetWidth; // reflow para reiniciar animacao
+        el.classList.add('click-zoom');
+        el.addEventListener('animationend', () => el.classList.remove('click-zoom'), { once: true });
+    };
+
+    // Tabs de solucoes: zoom no icone ao clicar na tab
+    document.querySelectorAll('.sol-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            const icon = tab.querySelector('.tab-icon');
+            triggerZoom(icon);
+        });
+    });
+
+    // Cards de diferenciais: zoom no icone ao clicar no card
+    document.querySelectorAll('.diff-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const icon = card.querySelector('.diff-icon');
+            triggerZoom(icon);
+        });
+    });
 
     // 2. Mobile Menu Navigation Toggle
     const mobileToggle = document.getElementById('mobileToggle');
