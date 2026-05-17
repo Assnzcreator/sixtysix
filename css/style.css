@@ -218,8 +218,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .navbar-sketch .sketch-svg path {
     stroke-width: 1.8px;
-    animation: drawCircle 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0.8s; /* Plays beautifully right after the page loads */
+    animation: drawCircle 5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.2s; /* Delay maior para o usuário focar primeiro no logo */
 }
 
 .text-center {

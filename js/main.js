@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const rect = element.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            // Start drawing circle when element's top edge is at 90% viewport height (comfortably entered bottom of screen)
-            // Finish drawing completely when element's top edge reaches 45% viewport height (centered in the viewport reading zone)
-            const startY = windowHeight * 0.90;
-            const endY = windowHeight * 0.45;
+            // Start drawing circle when element enters at 98% viewport height
+            // Finish drawing only when it reaches 10% viewport height — longo range = desenha devagar
+            const startY = windowHeight * 0.98;
+            const endY = windowHeight * 0.10;
 
             // Calculate progression from 0 to 1 based on page scroll direction and depth
             let progress = 0;
