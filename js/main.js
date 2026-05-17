@@ -528,4 +528,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run on initial load
     updateScrollProgress();
     handleScrollTopBtn();
+
+    // 11. Mobile Touch Feedback System
+    // Enables ultra-responsive active states on mobile touch screens
+    document.body.addEventListener('touchstart', () => {}, {passive: true});
+
+    const touchSelectors = '.glass-card, .btn-primary, .btn-secondary, .sol-tab, .diff-card, .timeline-item, .day-btn, .time-btn, .footer-links-list a';
+    document.querySelectorAll(touchSelectors).forEach(el => {
+        el.addEventListener('touchstart', () => {
+            el.classList.add('touched');
+        }, {passive: true});
+        
+        el.addEventListener('touchend', () => {
+            setTimeout(() => {
+                el.classList.remove('touched');
+            }, 100);
+        }, {passive: true});
+
+        el.addEventListener('touchmove', () => {
+            el.classList.remove('touched');
+        }, {passive: true});
+
+        el.addEventListener('touchcancel', () => {
+            el.classList.remove('touched');
+        }, {passive: true});
+    });
 });

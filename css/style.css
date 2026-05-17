@@ -277,7 +277,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 4px 20px rgba(0, 217, 139, 0.3);
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-primary.touched {
     background: var(--primary-light);
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(0, 217, 139, 0.45);
@@ -289,7 +289,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-primary);
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, .btn-secondary.touched {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
@@ -349,7 +349,7 @@ h1, h2, h3, h4, h5, h6 {
     pointer-events: none;
 }
 
-.glass-card:hover::before {
+.glass-card:hover::before, .glass-card.touched::before {
     left: 200%;
 }
 
@@ -364,11 +364,11 @@ h1, h2, h3, h4, h5, h6 {
     transition: opacity var(--transition-smooth);
 }
 
-.glass-card:hover::after {
+.glass-card:hover::after, .glass-card.touched::after {
     opacity: 1;
 }
 
-.glass-card:hover {
+.glass-card:hover, .glass-card.touched {
     border-color: rgba(0, 217, 139, 0.4);
     transform: translateY(-6px) scale(1.005);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
@@ -1018,7 +1018,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
 }
 
-.diff-card:hover .diff-icon {
+.diff-card:hover .diff-icon, .diff-card.touched .diff-icon {
     transform: scale(1.1);
     background: var(--primary);
     color: #ffffff;
@@ -1202,7 +1202,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all var(--transition-smooth);
 }
 
-.sol-tab:hover {
+.sol-tab:hover, .sol-tab.touched {
     color: var(--text-primary);
     border-color: rgba(255, 255, 255, 0.15);
 }
@@ -1571,7 +1571,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: all var(--transition-smooth);
 }
 
-.timeline-item:hover .timeline-marker {
+.timeline-item:hover .timeline-marker, .timeline-item.touched .timeline-marker {
     border-color: var(--primary);
     box-shadow: 0 0 15px rgba(0, 217, 139, 0.4);
     background: var(--primary);
@@ -1585,7 +1585,7 @@ h1, h2, h3, h4, h5, h6 {
     transition: color var(--transition-smooth);
 }
 
-.timeline-item:hover .timeline-marker svg {
+.timeline-item:hover .timeline-marker, .timeline-item.touched .timeline-marker svg {
     color: #ffffff;
 }
 
@@ -1852,7 +1852,7 @@ textarea.form-control {
     font-weight: 700;
 }
 
-.day-btn:hover {
+.day-btn:hover, .day-btn.touched {
     border-color: rgba(0, 217, 139, 0.5);
     background: rgba(0, 217, 139, 0.05);
 }
@@ -1885,7 +1885,7 @@ textarea.form-control {
     transition: all var(--transition-fast);
 }
 
-.time-btn:hover {
+.time-btn:hover, .time-btn.touched {
     border-color: rgba(0, 217, 139, 0.5);
 }
 
@@ -1960,7 +1960,7 @@ textarea.form-control {
     font-size: 0.9rem;
 }
 
-.footer-links-list a:hover {
+.footer-links-list a:hover, .footer-links-list a.touched {
     color: var(--primary-light);
 }
 
