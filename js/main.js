@@ -4,29 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
         lucide.createIcons();
     }
 
-    // 2. Hero Twinkling Dots - gera pontos individuais com timing aleatorio
-    const buildDots = (container, w, h) => {
-        if (!container) return;
-        const spacing = 30;
-        const fragment = document.createDocumentFragment();
-        for (let y = 0; y <= h; y += spacing) {
-            for (let x = 0; x <= w; x += spacing) {
-                const dot = document.createElement('span');
-                dot.className = 'hero-dot-particle';
-                dot.style.left = x + 'px';
-                dot.style.top  = y + 'px';
-                dot.style.setProperty('--delay', (Math.random() * 6).toFixed(2) + 's');
-                dot.style.setProperty('--dur',   (2 + Math.random() * 4).toFixed(2) + 's');
-                fragment.appendChild(dot);
-            }
-        }
-        container.appendChild(fragment);
-    };
-
-    const dotW = window.innerWidth * 0.44;
-    const dotH = window.innerHeight * 1.30;
-    buildDots(document.getElementById('heroDotsRight'), dotW, dotH);
-    buildDots(document.getElementById('heroDotsLeft'),  dotW, dotH);
 
     // 2. Mobile Menu Navigation Toggle
     const mobileToggle = document.getElementById('mobileToggle');

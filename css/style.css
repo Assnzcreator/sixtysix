@@ -546,44 +546,6 @@ h1, h2, h3, h4, h5, h6 {
     background: radial-gradient(circle, rgba(0, 166, 105, 0.08) 0%, rgba(0,0,0,0) 70%);
 }
 
-/* Dot grid - base compartilhada */
-.hero-dots {
-    position: absolute;
-    top: -80px;
-    width: 42%;
-    height: 130%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-/* Lado esquerdo: fade dissolve em direcao ao centro */
-.hero-dots-left {
-    left: -20px;
-    -webkit-mask-image: radial-gradient(
-        ellipse 95% 90% at 0% 10%,
-        black 0%, black 20%,
-        rgba(0,0,0,0.5) 55%,
-        transparent 80%
-    );
-    mask-image: radial-gradient(
-        ellipse 95% 90% at 0% 10%,
-        black 0%, black 20%,
-        rgba(0,0,0,0.5) 55%,
-        transparent 80%
-    );
-}
-
-/* Lado direito: escondido */
-.hero-dots-right { display: none; }
-
-@media (max-width: 768px) {
-    .hero-dots-left {
-        width: 70%;
-        height: 60%;
-        opacity: 0.4;
-    }
-}
 .hero-grid {
     display: grid;
     grid-template-columns: 1.1fr 0.9fr;
