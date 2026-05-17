@@ -546,50 +546,78 @@ h1, h2, h3, h4, h5, h6 {
     background: radial-gradient(circle, rgba(0, 166, 105, 0.08) 0%, rgba(0,0,0,0) 70%);
 }
 
-/* Dot grid — canto superior direito do hero com fade radial */
+/* Dot grid — canto superior direito do hero, clean e animado */
 .hero-dots {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 560px;
-    height: 560px;
-    /* Padrão de pontos usando radial-gradient repetido */
+    top: -60px;
+    right: -30px;
+    width: 55%;
+    height: 110%;
+    /* Pontos pequenos e espaçados para look clean */
     background-image: radial-gradient(
         circle,
-        rgba(0, 217, 139, 0.35) 1px,
+        rgba(0, 217, 139, 0.18) 1px,
         transparent 1px
     );
-    background-size: 28px 28px;
-    /* Fade radial saindo do canto superior direito */
+    background-size: 34px 34px;
+    /* Fade suave saindo do canto — dissolve em direção ao centro da tela */
     -webkit-mask-image: radial-gradient(
-        ellipse 80% 80% at 100% 0%,
+        ellipse 100% 95% at 100% 0%,
         black 0%,
-        black 30%,
-        transparent 75%
+        black 25%,
+        rgba(0,0,0,0.6) 50%,
+        transparent 80%
     );
     mask-image: radial-gradient(
-        ellipse 80% 80% at 100% 0%,
+        ellipse 100% 95% at 100% 0%,
         black 0%,
-        black 30%,
-        transparent 75%
+        black 25%,
+        rgba(0,0,0,0.6) 50%,
+        transparent 80%
     );
     pointer-events: none;
     z-index: 1;
-    /* Animação sutil de pulso para dar vida */
-    animation: dotsPulse 6s ease-in-out infinite alternate;
+    /* Drift: move o grid de forma contínua e seamless em diagonal */
+    animation: dotsDrift 18s linear infinite;
+    /* Precisa de position para o ::after funcionar */
+    overflow: hidden;
 }
 
-@keyframes dotsPulse {
-    0%   { opacity: 0.6; }
-    100% { opacity: 1; }
+/* Scan diagonal: uma luz que varre os pontos lentamente */
+.hero-dots::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        transparent 20%,
+        rgba(0, 217, 139, 0.06) 40%,
+        rgba(0, 217, 139, 0.12) 50%,
+        rgba(0, 217, 139, 0.06) 60%,
+        transparent 80%
+    );
+    background-size: 300% 300%;
+    animation: dotsScan 7s ease-in-out infinite;
 }
 
-/* Ocultar em mobile para não poluir */
+@keyframes dotsDrift {
+    0%   { background-position: 0px 0px; }
+    100% { background-position: 34px 34px; } /* exatamente 1 tile = loop perfeito */
+}
+
+@keyframes dotsScan {
+    0%   { background-position: 200% 200%; opacity: 0; }
+    30%  { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { background-position: -200% -200%; opacity: 0; }
+}
+
+/* Mobile: reduzir mas manter o efeito */
 @media (max-width: 768px) {
     .hero-dots {
-        width: 280px;
-        height: 280px;
-        opacity: 0.5;
+        width: 70%;
+        height: 60%;
+        opacity: 0.45;
     }
 }
 
