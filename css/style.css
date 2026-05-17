@@ -64,6 +64,8 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100vw;
+    position: relative;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -1975,13 +1977,6 @@ textarea.form-control {
    MOBILE SAFETY NET — Prevents any element from causing horizontal overflow
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Universal width constraint */
-    *,
-    *::before,
-    *::after {
-        max-width: 100%;
-    }
-
     /* Sections never exceed viewport */
     section,
     .container,
