@@ -414,7 +414,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
     font-family: var(--font-heading);
     font-size: 1.35rem;
     font-weight: 800;
@@ -422,7 +422,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .logo-img {
-    height: 32px;
+    height: 42px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-fast);
@@ -576,18 +576,18 @@ h1, h2, h3, h4, h5, h6 {
 /* Cada ponto individual gerado pelo JS */
 .hero-dot-particle {
     position: absolute;
-    width: 2px;
-    height: 2px;
+    width: 2.5px;
+    height: 2.5px;
     border-radius: 50%;
-    background: rgba(0, 217, 139, 0.9);
-    box-shadow: 0 0 3px rgba(0, 217, 139, 0.5);
+    background: rgba(0, 217, 139, 1);
+    box-shadow: 0 0 5px rgba(0, 217, 139, 0.7), 0 0 10px rgba(0, 217, 139, 0.3);
     animation: twinkleDot var(--dur, 3s) ease-in-out infinite alternate;
     animation-delay: var(--delay, 0s);
 }
 
 @keyframes twinkleDot {
-    0%   { opacity: 0.04; transform: scale(0.7); }
-    100% { opacity: 0.75; transform: scale(1.3); }
+    0%   { opacity: 0.08; transform: scale(0.8); }
+    100% { opacity: 0.85; transform: scale(1.4); }
 }
 
 /* Mobile: container menor */

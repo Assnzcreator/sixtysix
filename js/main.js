@@ -6,10 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. Hero Twinkling Dots — gera pontos individuais com timing aleatório
     const heroDots = document.getElementById('heroDots');
-    if (heroDots && window.innerWidth > 768) {
-        const spacing = 32;  // distância entre pontos (grid)
-        const w = heroDots.offsetWidth;
-        const h = heroDots.offsetHeight;
+    if (heroDots) {
+        const spacing = 30;
+        // Usa dimensoes do viewport pois o elemento pode nao ter layout ainda
+        const w = window.innerWidth * 0.70;  // 65% da viewport
+        const h = window.innerHeight * 1.30; // 130% da viewport
         const fragment = document.createDocumentFragment();
 
         for (let y = 0; y <= h; y += spacing) {
@@ -18,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 dot.className = 'hero-dot-particle';
                 dot.style.left = x + 'px';
                 dot.style.top  = y + 'px';
-                // Delay e duração aleatórios — faz cada ponto piscar de forma independente
                 dot.style.setProperty('--delay', (Math.random() * 6).toFixed(2) + 's');
                 dot.style.setProperty('--dur',   (2 + Math.random() * 4).toFixed(2) + 's');
                 fragment.appendChild(dot);
