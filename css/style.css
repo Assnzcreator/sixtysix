@@ -1977,7 +1977,7 @@ textarea.form-control {
    MOBILE SAFETY NET — Prevents any element from causing horizontal overflow
    ========================================================================== */
 @media (max-width: 768px) {
-    /* Sections never exceed viewport */
+    /* Sections constrained to viewport width — sem overflow-x para não criar scroll interno */
     section,
     .container,
     .hero-grid,
@@ -1992,7 +1992,6 @@ textarea.form-control {
     .footer-grid {
         width: 100%;
         max-width: 100%;
-        overflow-x: hidden;
     }
 
     /* Ensure hero section never shows chat visual */
