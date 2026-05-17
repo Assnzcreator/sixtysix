@@ -435,13 +435,13 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 6px;
     font-family: var(--font-heading);
-    font-size: 1.35rem;
+    font-size: 1.6rem;
     font-weight: 800;
     letter-spacing: -0.03em;
 }
 
 .logo-img {
-    height: 42px;
+    height: 54px;
     width: auto;
     object-fit: contain;
     transition: transform var(--transition-fast);
@@ -1558,7 +1558,7 @@ h1, h2, h3, h4, h5, h6 {
     left: 20px;
     top: 0;
     width: 42px;
-    height: 42px;
+    height: 54px;
     border-radius: 50%;
     background: var(--bg-surface-elevated);
     border: 2px solid var(--border-color);
@@ -1601,7 +1601,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .timeline-title {
-    font-size: 1.35rem;
+    font-size: 1.6rem;
     margin-bottom: 12px;
     font-weight: 600;
 }
