@@ -587,9 +587,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Ocultar o chat hero completamente em mobile (evita scroll capturado e overflow) */
 @media (max-width: 768px) {
-    .hero-visual {
-        display: none !important;
-    }
+    
 
     .agent-card-float {
         display: none !important;
@@ -2151,15 +2149,29 @@ textarea.form-control {
         max-width: 100%;
     }
 
-    /* Ensure hero section never shows chat visual */
-    .hero-visual,
-    .agent-chat-window,
+        /* Ensure hero section visual is beautifully displayed and responsive on mobile */
+    .hero-visual {
+        display: block !important;
+        visibility: visible !important;
+        width: 100% !important;
+        height: auto !important;
+        margin-top: 30px;
+        perspective: none !important; /* Remove perspective transform on mobile for clean rendering */
+    }
+
+    .agent-chat-window {
+        display: flex !important;
+        visibility: visible !important;
+        width: 100% !important;
+        height: 360px !important; /* Reduced height on mobile to look compact and premium */
+        overflow: hidden !important;
+    }
+
     .agent-card-float {
         display: none !important;
         visibility: hidden !important;
         width: 0 !important;
         height: 0 !important;
-        overflow: hidden !important;
     }
 
     /* Chat body: absolutely no scroll on mobile */
