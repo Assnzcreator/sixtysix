@@ -551,26 +551,31 @@ h1, h2, h3, h4, h5, h6 {
         grid-template-columns: 1fr;
         text-align: center;
     }
+}
 
-    /* Disable scroll capture inside the chat widget on mobile */
+/* Ocultar o chat hero completamente em mobile (evita scroll capturado e overflow) */
+@media (max-width: 768px) {
     .hero-visual {
-        pointer-events: none;
+        display: none !important;
     }
 
-    .agent-chat-window {
-        height: 300px;
-        pointer-events: none;
-    }
-
-    .chat-body {
-        overflow: hidden;
-        touch-action: none;
-        pointer-events: none;
-    }
-
-    /* Hide floating card that overflows on mobile */
     .agent-card-float {
-        display: none;
+        display: none !important;
+    }
+
+    /* About values: empilhar em mobile */
+    .about-values {
+        grid-template-columns: 1fr;
+    }
+
+    /* Sol title menor */
+    .sol-title {
+        font-size: 1.5rem;
+    }
+
+    /* Contact form: padding reduzido */
+    .contact-form-wrapper {
+        padding: 20px;
     }
 }
 
@@ -1072,7 +1077,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sol-title {
-    font-size: 2rem;
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
     margin-bottom: 20px;
     font-weight: 700;
 }
@@ -1804,6 +1809,50 @@ textarea.form-control {
         flex-direction: column;
         gap: 16px;
         text-align: center;
+    }
+}
+
+/* Extra small screens (≤ 400px) */
+@media (max-width: 400px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-desc {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+        padding: 12px 20px;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .timeline-item {
+        padding-left: 70px;
+    }
+
+    .contact-form-wrapper {
+        padding: 16px;
+    }
+
+    .scheduler-widget {
+        padding: 14px;
+    }
+
+    .calendar-days {
+        gap: 6px;
+    }
+
+    .day-btn {
+        padding: 8px 4px;
     }
 }
 
