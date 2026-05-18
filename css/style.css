@@ -2526,16 +2526,22 @@ textarea.form-control {
 }
 
 /* Keep the icons inside upright when orbit rotates */
-.orbit-inner .orbit-item {
+.orbit-inner .orbit-item svg,
+.orbit-inner .orbit-item span {
     animation: rotate-item-counterclockwise 25s linear infinite;
+    display: inline-block;
 }
 
-.orbit-middle .orbit-item {
+.orbit-middle .orbit-item svg,
+.orbit-middle .orbit-item span {
     animation: rotate-item-clockwise 35s linear infinite;
+    display: inline-block;
 }
 
-.orbit-outer .orbit-item {
+.orbit-outer .orbit-item svg,
+.orbit-outer .orbit-item span {
     animation: rotate-item-counterclockwise 45s linear infinite;
+    display: inline-block;
 }
 
 /* SVG Formatting */
@@ -2659,7 +2665,8 @@ textarea.form-control {
 
 /* Pause animations when hovering on orbit wrapper */
 .orbit-wrapper:hover .orbit-path,
-.orbit-wrapper:hover .orbit-item {
+.orbit-wrapper:hover .orbit-item svg,
+.orbit-wrapper:hover .orbit-item span {
     animation-play-state: paused !important;
 }
 
