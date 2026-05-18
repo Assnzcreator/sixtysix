@@ -2696,7 +2696,7 @@ textarea.form-control {
 
 @media (max-width: 576px) {
     .orbit-wrapper {
-        transform: scale(0.62);
+        transform: scale(0.68);
     }
     
     .integrations-visual {
@@ -2706,7 +2706,7 @@ textarea.form-control {
 
 @media (max-width: 400px) {
     .orbit-wrapper {
-        transform: scale(0.52);
+        transform: scale(0.58);
     }
     
     .integrations-visual {
