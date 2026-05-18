@@ -2559,6 +2559,24 @@ textarea.form-control {
     transform: scale(1.1);
 }
 
+/* Niche Core Icons Custom Glow (AI & Development) */
+.orbit-item.niche-item {
+    border-color: rgba(var(--niche-glow-rgb, 6, 182, 212), 0.4) !important;
+    background: rgba(var(--niche-glow-rgb, 6, 182, 212), 0.08) !important;
+    box-shadow: 0 0 12px rgba(var(--niche-glow-rgb, 6, 182, 212), 0.25);
+}
+.orbit-item.niche-item svg {
+    color: var(--brand-color) !important;
+}
+.orbit-item.niche-item:hover {
+    box-shadow: 0 0 30px var(--brand-color) !important;
+    background: var(--brand-color) !important;
+    border-color: #fff !important;
+}
+.orbit-item.niche-item:hover svg {
+    color: #fff !important;
+}
+
 /* Tooltip Premium */
 .orbit-item::after {
     content: attr(data-tooltip);
