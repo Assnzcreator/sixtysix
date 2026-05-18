@@ -457,13 +457,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Formata a data de AAAA-MM-DD para DD/MM/AAAA
             const formattedDate = selectedDate ? selectedDate.split('-').reverse().join('/') : '';
 
-            // Mensagem elegante e personalizada que será enviada para o WhatsApp do usuário
+            const confirmationText = encodeURIComponent(`Olá! Quero confirmar minha sessão estratégica agendada para ${formattedDate} às ${selectedTime}.`);
             const whatsappMessage = `Olá, *${name}*! Tudo bem?\n\n` +
-                `Recebemos sua solicitação no site da *SixtySix* para o projeto de *${selectedSolution}*.\n\n` +
-                `Um de nossos engenheiros especialistas entrará em contato direto com você por aqui em instantes. Aproveitaremos para conduzir a sua sessão estratégica agendada para *${formattedDate}* às *${selectedTime}*.\n\n` +
-                `👉 *Por favor, clique no link abaixo para confirmar sua presença:* \n` +
-                `https://sixtysix.net/confirmar-reuniao\n\n` +
-                `Se quiser adiantar algum detalhe ou ideia do seu projeto, sinta-se à vontade para nos responder por aqui.\n\n` +
+                `Recebemos seu contato na *SixtySix* para o projeto de *${selectedSolution}*.\n\n` +
+                `Nossa equipe de engenharia já está analisando sua solicitação.\n\n` +
+                `📅 *Sua sessão estratégica está reservada:*\n` +
+                `*${formattedDate}* às *${selectedTime}*\n\n` +
+                `👉 *Clique abaixo para confirmar sua presença:*\n` +
+                `https://wa.me/5581992376036?text=${confirmationText}\n\n` +
                 `Atenciosamente,\n` +
                 `*Equipe SixtySix 💚*`;
 
