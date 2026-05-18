@@ -269,18 +269,27 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     cursor: pointer;
     transition: all var(--transition-fast);
+    position: relative;
+    z-index: 5;
 }
 
 .btn-primary {
-    background: var(--primary);
-    color: #ffffff;
-    box-shadow: 0 4px 20px rgba(0, 217, 139, 0.3);
+    background: rgba(0, 217, 139, 0.08);
+    border: 1px solid rgba(0, 217, 139, 0.35);
+    color: var(--primary-light);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 217, 139, 0.12),
+                inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
 .btn-primary:hover, .btn-primary.touched {
-    background: var(--primary-light);
+    background: rgba(0, 217, 139, 0.18);
+    border-color: rgba(0, 217, 139, 0.65);
+    color: #ffffff;
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(0, 217, 139, 0.45);
+    box-shadow: 0 12px 40px rgba(0, 217, 139, 0.28),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
 .btn-secondary {
@@ -410,11 +419,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header.scrolled {
-    background: rgba(6, 6, 8, 0.85);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-color);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid transparent;
     padding: 12px 0;
+}
+
+/* Hide menu options, action buttons, and mobile toggles when header is scrolled */
+.header.scrolled .nav-menu:not(.active) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+
+.header.scrolled .nav-actions {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+}
+
+.header.scrolled:not(:has(.nav-menu.active)) .mobile-toggle {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
 }
 
 .header .container {
@@ -455,6 +486,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 32px;
+    transition: opacity var(--transition-smooth), transform var(--transition-smooth), visibility var(--transition-smooth);
 }
 
 .nav-link {
@@ -488,6 +520,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 16px;
+    transition: opacity var(--transition-smooth), transform var(--transition-smooth), visibility var(--transition-smooth);
 }
 
 /* Mobile Toggle */
@@ -498,6 +531,7 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     width: 24px;
     z-index: 110;
+    transition: opacity var(--transition-smooth), transform var(--transition-smooth), visibility var(--transition-smooth);
 }
 
 .mobile-toggle span {
@@ -525,7 +559,7 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
         justify-content: center;
         gap: 40px;
-        transition: right var(--transition-smooth);
+        transition: right var(--transition-smooth), opacity var(--transition-smooth), transform var(--transition-smooth), visibility var(--transition-smooth);
         z-index: 105;
     }
     
@@ -549,7 +583,6 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     padding-top: 100px;
     position: relative;
-    overflow: hidden;
 }
 
 .hero-glow-1 {
@@ -1184,6 +1217,8 @@ h1, h2, h3, h4, h5, h6 {
     gap: 16px;
     margin-bottom: 60px;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 5;
 }
 
 .sol-tab {
@@ -1657,7 +1692,6 @@ h1, h2, h3, h4, h5, h6 {
 /* 10. About Us Section */
 .about {
     position: relative;
-    overflow: hidden;
 }
 
 .about-grid {
