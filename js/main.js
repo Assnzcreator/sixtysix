@@ -1,11 +1,3 @@
-// Immediate Theme Loader (prevents flashing of incorrect theme colors)
-(function() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.documentElement.classList.add('light-theme');
-    }
-})();
-
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Lucide Icons
     if (typeof lucide !== 'undefined') {
@@ -764,21 +756,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Fluctuate chart bars every 2.5 seconds
     setInterval(animateChart, 2500);
     animateChart(); // initial run
-
-    // 10.5. Dark/Light Theme Toggle Action
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const isLight = document.documentElement.classList.contains('light-theme');
-            if (isLight) {
-                document.documentElement.classList.remove('light-theme');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                document.documentElement.classList.add('light-theme');
-                localStorage.setItem('theme', 'light');
-            }
-        });
-    }
 
     // 11. Mobile Touch Feedback System
     // Enables ultra-responsive active states on mobile touch screens
