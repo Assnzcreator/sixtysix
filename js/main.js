@@ -394,6 +394,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 7.5. Phone Number Input Masking (Auto-format to Brazilian standard (XX) XXXXX-XXXX)
+    const phoneInput = document.getElementById('phone');
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, ''); // Remove tudo que não for número
+            
+            // Limita a 11 dígitos no total (DDD + 9 dígitos)
+            if (value.length > 11) {
+                value = value.slice(0, 11);
+            }
+            
+            // Aplica a formatação progressiva
+            if (value.length > 10) {
+                // Formato Celular: (XX) XXXXX-XXXX
+                value = value.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
+            } else if (value.length > 6) {
+                // Formato intermediário em digitação ou telefone fixo: (XX) XXXX-XXXX
+                value = value.replace(/^(\d{2})(\d{4})(\d{0,4})$/, '($1) $2-$3');
+            } else if (value.length > 2) {
+                // Apenas DDD e início do número: (XX) XXXX
+                value = value.replace(/^(\d{2})(\d{0,4})$/, '($1) $2');
+            } else if (value.length > 0) {
+                // Apenas DDD
+                value = value.replace(/^(\d*)$/, '($1');
+            }
+            
+            e.target.value = value;
+        });
+    }
+
     // 8. Contact Form Submission Handler
     const contactForm = document.getElementById('contactForm');
     const formFeedback = document.getElementById('formFeedback');
