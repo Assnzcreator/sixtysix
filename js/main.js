@@ -441,9 +441,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // CONFIGURAÇÃO DA API UZAPI (WHATSAPP)
             // ==========================================
             // IMPORTANTE: Insira abaixo suas credenciais da UZAPI.
-            const UZAPI_USERNAME = '835349114188110';
-            const UZAPI_PHONE_NUMBER_ID = '989607734841557';
-            const UZAPI_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNDNjMzcyMS05NjNiLTRhNDYtYTIyMi0zZDRkYzIxZWIwYzciLCJ1c2VybmFtZSI6ImFzc256IiwiaW5zdGFuY2VJZCI6Ijc0NjZiOWIwLWE5YzctNGMwMS04MjkzLTcxNTk0MjVmMmNkOSIsInBob25lX251bWJlcl9pZCI6Ijk4OTYwNzczNDg0MTU1NyIsImlhdCI6MTc3OTA3ODAwMiwiZXhwIjoxNzc5MDc4MDYyfQ.D4qn55XlmTFFDtij2u7TJKzOlUfI5ottVKeeX8lCyqo';
+            const UZAPI_USERNAME = 'assnz';
+            const UZAPI_PHONE_NUMBER_ID = '490341186052608';
+            const UZAPI_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNDNjMzcyMS05NjNiLTRhNDYtYTIyMi0zZDRkYzIxZWIwYzciLCJ1c2VybmFtZSI6ImFzc256IiwiaW5zdGFuY2VJZCI6IjM1OWIwNzRiLWNjMWItNGRhYi05YzVhLTA1YTdiMzFiMjViOSIsInBob25lX251bWJlcl9pZCI6IjQ5MDM0MTE4NjA1MjYwOCIsImlhdCI6MTc3OTEyMTgwNywiZXhwIjoxNzc5MTIxODY3fQ.i8a2FQGE8KsTnDv6Uruw9Q3JnOfsPpkhE6QXdxKABUg';
 
             // Traduz a solução para um formato mais legível no WhatsApp
             const solutionLabels = {
