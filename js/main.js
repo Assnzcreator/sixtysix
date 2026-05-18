@@ -458,15 +458,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const formattedDate = selectedDate ? selectedDate.split('-').reverse().join('/') : '';
 
             // Mensagem elegante e personalizada que será enviada para o WhatsApp do usuário
-            const whatsappMessage = `Olá, *${name}*! 🚀\n\n` +
-                `Recebemos a sua solicitação no site da *SixtySix*!\n\n` +
-                `Aqui está o resumo da sua solicitação:\n` +
-                `📂 *Solução desejada:* ${selectedSolution}\n` +
-                `📅 *Conversa estratégica agendada:* ${formattedDate} às ${selectedTime}\n\n` +
-                `Um de nossos especialistas em engenharia e inteligência artificial entrará em contato com você em breve para alinhar os detalhes!\n\n` +
-                `Caso precise adiantar alguma informação, você pode nos responder por aqui.\n\n` +
+            const whatsappMessage = `Olá, *${name}*! Tudo bem?\n\n` +
+                `Recebemos sua solicitação no site da *SixtySix* para o projeto de *${selectedSolution}*.\n\n` +
+                `Um de nossos engenheiros especialistas entrará em contato direto com você por aqui em instantes. Aproveitaremos para conduzir a sua sessão estratégica agendada para *${formattedDate}* às *${selectedTime}*.\n\n` +
+                `👉 *Por favor, clique no link abaixo para confirmar sua presença:* \n` +
+                `https://sixtysix.net/confirmar-reuniao\n\n` +
+                `Se quiser adiantar algum detalhe ou ideia do seu projeto, sinta-se à vontade para nos responder por aqui.\n\n` +
                 `Atenciosamente,\n` +
-                `*Equipe SixtySix ⚡*`;
+                `*Equipe SixtySix 💚*`;
 
             // Verifica se a API está configurada antes de enviar
             if (UZAPI_TOKEN !== 'SEU_TOKEN_AQUI' && UZAPI_USERNAME !== 'SEU_USERNAME_AQUI' && UZAPI_PHONE_NUMBER_ID !== 'SEU_PHONE_NUMBER_ID_AQUI') {
