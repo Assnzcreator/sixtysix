@@ -457,14 +457,9 @@ document.addEventListener('DOMContentLoaded', () => {
             // Formata a data de AAAA-MM-DD para DD/MM/AAAA
             const formattedDate = selectedDate ? selectedDate.split('-').reverse().join('/') : '';
 
-            const whatsappMessage = `Olá, *${name}*! Tudo bem?\n\n` +
+            const whatsappMessage = `Olá, *${name}!* Tudo bem?\n\n` +
                 `Recebemos seu contato na *SixtySix* para o projeto de *${selectedSolution}*.\n\n` +
-                `Nossa equipe de engenharia já está analisando sua solicitação.\n\n` +
-                `📅 *Sua sessão estratégica está reservada:*\n` +
-                `*${formattedDate}* às *${selectedTime}*\n\n` +
-                `👉 *Responda a esta mensagem para confirmar sua presença.*\n\n` +
-                `Atenciosamente,\n` +
-                `*Equipe SixtySix 💚*`;
+                `Nossa equipe de engenharia já está analisando sua solicitação.`;
 
             // Verifica se a API está configurada antes de enviar
             if (UZAPI_TOKEN !== 'SEU_TOKEN_AQUI' && UZAPI_USERNAME !== 'SEU_USERNAME_AQUI' && UZAPI_PHONE_NUMBER_ID !== 'SEU_PHONE_NUMBER_ID_AQUI') {
