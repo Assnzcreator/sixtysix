@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Bind listeners to scroll and resize for immediate responsive rendering
     window.addEventListener('scroll', checkScrollEffects, { passive: true });
     window.addEventListener('resize', checkScrollEffects, { passive: true });
-    
+
     // Initial run on page load
     checkScrollEffects();
 
@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentLogIndex = 0; // Start at 0 to feed the initial connection workflow
-    
+
     const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     const appendTerminalLine = (type, text) => {
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         while (true) {
             await sleep(2200); // interval between logs
-            
+
             if (currentLogIndex >= agentLogs.length) {
                 // Reset terminal with dynamic clear
                 await sleep(5000);
@@ -321,12 +321,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const getNextWorkingDays = () => {
             const days = [];
             let date = new Date();
-            
+
             // Loop until we have 5 working days
             while (days.length < 5) {
                 date.setDate(date.getDate() + 1); // Get tomorrow
                 const dayOfWeek = date.getDay(); // 0 = Sunday, 6 = Saturday
-                
+
                 if (dayOfWeek !== 0 && dayOfWeek !== 6) {
                     days.push(new Date(date));
                 }
@@ -344,16 +344,16 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.type = 'button';
             btn.className = 'day-btn';
             if (index === 0) btn.classList.add('active'); // Select first day by default
-            
+
             const wday = weekdaysPT[day.getDay()];
             const num = day.getDate();
             const formattedDate = day.toISOString().split('T')[0];
-            
+
             btn.innerHTML = `
                 <span class="wday">${wday}</span>
                 <span class="num">${num}</span>
             `;
-            
+
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 Processando solicitação... 
                 <i data-lucide="loader-2" class="animate-spin" style="width: 16px; height: 16px;"></i>
             `;
-            
+
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons({
                     node: submitBtn
@@ -437,8 +437,83 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Mensagem:', message);
             console.log('-----------------------------------------');
 
-            // Simulate server network latency
-            await sleep(1500);
+            // ==========================================
+            // CONFIGURAÇÃO DA API UZAPI (WHATSAPP)
+            // ==========================================
+            // IMPORTANTE: Insira abaixo suas credenciais da UZAPI.
+            const UZAPI_USERNAME = '835349114188110';
+            const UZAPI_PHONE_NUMBER_ID = '989607734841557';
+            const UZAPI_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwNDNjMzcyMS05NjNiLTRhNDYtYTIyMi0zZDRkYzIxZWIwYzciLCJ1c2VybmFtZSI6ImFzc256IiwiaW5zdGFuY2VJZCI6Ijc0NjZiOWIwLWE5YzctNGMwMS04MjkzLTcxNTk0MjVmMmNkOSIsInBob25lX251bWJlcl9pZCI6Ijk4OTYwNzczNDg0MTU1NyIsImlhdCI6MTc3OTA3ODAwMiwiZXhwIjoxNzc5MDc4MDYyfQ.D4qn55XlmTFFDtij2u7TJKzOlUfI5ottVKeeX8lCyqo';
+
+            // Traduz a solução para um formato mais legível no WhatsApp
+            const solutionLabels = {
+                'delivery': 'Plataforma de Delivery',
+                'ia': 'Automações com Agentes de IA',
+                'custom': 'Sistemas / Software Sob Medida',
+                'other': 'Outra necessidade técnica'
+            };
+            const selectedSolution = solutionLabels[solution] || 'Solicitação de Orçamento';
+
+            // Formata a data de AAAA-MM-DD para DD/MM/AAAA
+            const formattedDate = selectedDate ? selectedDate.split('-').reverse().join('/') : '';
+
+            // Mensagem elegante e personalizada que será enviada para o WhatsApp do usuário
+            const whatsappMessage = `Olá, *${name}*! 🚀\n\n` +
+                `Recebemos a sua solicitação no site da *SixtySix*!\n\n` +
+                `Aqui está o resumo da sua solicitação:\n` +
+                `📂 *Solução desejada:* ${selectedSolution}\n` +
+                `📅 *Conversa estratégica agendada:* ${formattedDate} às ${selectedTime}\n\n` +
+                `Um de nossos especialistas em engenharia e inteligência artificial entrará em contato com você em breve para alinhar os detalhes!\n\n` +
+                `Caso precise adiantar alguma informação, você pode nos responder por aqui.\n\n` +
+                `Atenciosamente,\n` +
+                `*Equipe SixtySix ⚡*`;
+
+            // Verifica se a API está configurada antes de enviar
+            if (UZAPI_TOKEN !== 'SEU_TOKEN_AQUI' && UZAPI_USERNAME !== 'SEU_USERNAME_AQUI' && UZAPI_PHONE_NUMBER_ID !== 'SEU_PHONE_NUMBER_ID_AQUI') {
+                try {
+                    // Limpar o número do celular (remover parênteses, espaços, traços)
+                    let cleanPhone = phone.replace(/\D/g, '');
+
+                    // Se o número não contiver o DDI do Brasil (55), e tiver 10 ou 11 dígitos, adicionamos 55 no início
+                    if (cleanPhone.length === 11 || cleanPhone.length === 10) {
+                        cleanPhone = '55' + cleanPhone;
+                    }
+
+                    console.log('Enviando mensagem de WhatsApp via UZAPI para:', cleanPhone);
+
+                    const UZAPI_URL = `https://api.uzapi.com.br/${UZAPI_USERNAME}/v1/${UZAPI_PHONE_NUMBER_ID}/messages`;
+
+                    const response = await fetch(UZAPI_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${UZAPI_TOKEN}` // UZAPI utiliza autenticação Bearer Token
+                        },
+                        body: JSON.stringify({
+                            to: cleanPhone, // Destinatário formatado
+                            delayMessage: 0,
+                            delayTyping: 3, // Simula digitação por 3 segundos no WhatsApp
+                            type: 'text',
+                            text: {
+                                body: whatsappMessage
+                            }
+                        })
+                    });
+
+                    if (response.ok) {
+                        console.log('Sucesso: Mensagem de WhatsApp enviada via UZAPI!');
+                    } else {
+                        const errText = await response.text();
+                        console.error('Erro retornado pela API UZAPI:', errText);
+                    }
+                } catch (error) {
+                    console.error('Erro de conexão ao tentar se comunicar com a UZAPI:', error);
+                }
+            } else {
+                console.warn('Aviso: Integração UZAPI não configurada no arquivo js/main.js.');
+                // Simula latência de rede em ambiente de teste
+                await sleep(1500);
+            }
 
             // Success feedback
             submitBtn.innerHTML = originalBtnText;
@@ -530,7 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScrollTopBtn();
 
     // 12. Active Solutions Showcase Live Mockup Animations
-    
+
     // -- Delivery Mockup Animation --
     const deliveryOrderList = document.querySelector('.delivery-order-list');
     const deliveryOrders = [
@@ -550,10 +625,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Count up stats randomly to simulate real activity
         totalOrders += 1;
         totalRevenue += parseFloat((Math.random() * 20 + 10).toFixed(2));
-        
+
         const orderStat = document.querySelector('.stat-box:nth-child(1) .stat-val');
         const revStat = document.querySelector('.stat-box:nth-child(2) .stat-val');
-        
+
         if (orderStat) orderStat.textContent = totalOrders;
         if (revStat) revStat.textContent = `R$ ${(totalRevenue / 1000).toFixed(1)}k`;
 
@@ -607,10 +682,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!iaFlowSteps || iaFlowSteps.length === 0) return;
 
         iaFlowSteps.forEach(step => step.classList.remove('active'));
-        
+
         // Activate current step
         iaFlowSteps[iaStepIdx].classList.add('active');
-        
+
         // Move to next step or reset
         iaStepIdx = (iaStepIdx + 1) % iaFlowSteps.length;
     };
@@ -621,7 +696,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // -- Custom SaaS Chart Mockup Animation --
     const chartBars = document.querySelectorAll('#pane-custom .chart-bar');
-    
+
     const animateChart = () => {
         if (!chartBars || chartBars.length === 0) return;
 
@@ -640,26 +715,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 11. Mobile Touch Feedback System
     // Enables ultra-responsive active states on mobile touch screens
-    document.body.addEventListener('touchstart', () => {}, {passive: true});
+    document.body.addEventListener('touchstart', () => { }, { passive: true });
 
     const touchSelectors = '.glass-card, .btn-primary, .btn-secondary, .sol-tab, .diff-card, .timeline-item, .day-btn, .time-btn, .footer-links-list a';
     document.querySelectorAll(touchSelectors).forEach(el => {
         el.addEventListener('touchstart', () => {
             el.classList.add('touched');
-        }, {passive: true});
-        
+        }, { passive: true });
+
         el.addEventListener('touchend', () => {
             setTimeout(() => {
                 el.classList.remove('touched');
             }, 100);
-        }, {passive: true});
+        }, { passive: true });
 
         el.addEventListener('touchmove', () => {
             el.classList.remove('touched');
-        }, {passive: true});
+        }, { passive: true });
 
         el.addEventListener('touchcancel', () => {
             el.classList.remove('touched');
-        }, {passive: true});
+        }, { passive: true });
     });
 });
