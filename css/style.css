@@ -2300,11 +2300,13 @@ textarea.form-control {
    16. ECOSYSTEM & INTEGRATIONS SECTION (ORBIT SYSTEM)
    ========================================================================== */
 .integrations {
-    background: radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 60%),
+    background: linear-gradient(180deg, var(--bg-main) 0%, transparent 15%, transparent 85%, var(--bg-main) 100%),
+                radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.05) 0%, transparent 60%),
                 radial-gradient(circle at 20% 80%, rgba(99, 91, 255, 0.03) 0%, transparent 60%);
+    background-color: var(--bg-main);
     overflow: hidden;
     position: relative;
-    /* Blend completely and naturally with the surrounding dark theme */
+    /* Blend completely and naturally with the surrounding dark theme without sharp boundaries */
 }
 
 .integrations-grid {
