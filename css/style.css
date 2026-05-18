@@ -419,34 +419,33 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header.scrolled {
-    background: rgba(6, 6, 8, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 10px 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    padding: 12px 0;
 }
 
-/* Keep menu options, action buttons, and mobile toggles visible and functional when header is scrolled */
+/* Hide menu options, action buttons, and mobile toggles when header is scrolled */
 .header.scrolled .nav-menu:not(.active) {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
 }
 
 .header.scrolled .nav-actions {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
 }
 
 .header.scrolled:not(:has(.nav-menu.active)) .mobile-toggle {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
 }
 
 .header .container {
