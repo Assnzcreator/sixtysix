@@ -2,7 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Initialize Lucide Icons
     if (typeof lucide !== 'undefined') {
         lucide.createIcons();
+    }    // 1.5. 3D Tilt effect for Orbital System
+    const integrationsVisual = document.querySelector('.integrations-visual');
+    const orbitWrapper = document.querySelector('.orbit-wrapper');
+    
+    if (integrationsVisual && orbitWrapper) {
+        integrationsVisual.addEventListener('mousemove', (e) => {
+            const rect = integrationsVisual.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            
+            // Limit angles (max 15 degrees tilt)
+            const rotateX = -(y / (rect.height / 2)) * 15;
+            const rotateY = (x / (rect.width / 2)) * 15;
+            
+            orbitWrapper.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        
+        integrationsVisual.addEventListener('mouseleave', () => {
+            orbitWrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
     }
+
 
     // 2. Click zoom effect nos icones de servicos
     const triggerZoom = (el) => {
