@@ -206,30 +206,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial run on page load
     checkScrollEffects();
 
-    // 5. Solutions Tab Swapper & Slider Indicator
+    // 5. Solutions Tab Swapper
     const tabs = document.querySelectorAll('.sol-tab');
     const panes = document.querySelectorAll('.sol-pane');
-    const tabIndicator = document.querySelector('.tab-slider-indicator');
-
-    const updateTabIndicator = (activeTab) => {
-        if (!tabIndicator || !activeTab) return;
-        tabIndicator.style.width = `${activeTab.offsetWidth}px`;
-        tabIndicator.style.left = `${activeTab.offsetLeft}px`;
-    };
-
-    // Initialize indicator position
-    const initialActiveTab = document.querySelector('.sol-tab.active');
-    if (initialActiveTab) {
-        setTimeout(() => updateTabIndicator(initialActiveTab), 150);
-    }
-
-    // Update position on window resize
-    window.addEventListener('resize', () => {
-        const currentActive = document.querySelector('.sol-tab.active');
-        if (currentActive) {
-            updateTabIndicator(currentActive);
-        }
-    });
 
     tabs.forEach(tab => {
         tab.addEventListener('click', () => {
@@ -238,18 +217,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Deactivate active tab & activate clicked
             tabs.forEach(t => t.classList.remove('active'));
             tab.classList.add('active');
-            updateTabIndicator(tab);
 
             // Hide active pane & reveal targeted pane
             panes.forEach(pane => {
                 pane.classList.remove('active');
                 if (pane.getAttribute('id') === `pane-${targetTab}`) {
                     pane.classList.add('active');
-                    
-                    // Trigger pane-specific animations
-                    if (targetTab === 'custom') {
-                        animateUptimeGauge();
-                    }
                 }
             });
         });
@@ -679,22 +652,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 12. Active Solutions Showcase Live Mockup Animations
 
-    // Generic count-up animation helper
-    const animateValue = (element, start, end, duration, formatFn) => {
-        if (!element) return;
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            const value = start + progress * (end - start);
-            element.textContent = formatFn(value);
-            if (progress < 1) {
-                window.requestAnimationFrame(step);
-            }
-        };
-        window.requestAnimationFrame(step);
-    };
-
     // -- Delivery Mockup Animation --
     const deliveryOrderList = document.querySelector('.delivery-order-list');
     const deliveryOrders = [
@@ -711,16 +668,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const animateDelivery = () => {
         if (!deliveryOrderList) return;
 
-        // Animate stat counters progress
-        const prevOrders = totalOrders;
+        // Count up stats randomly to simulate real activity
         totalOrders += 1;
-        const orderStat = document.querySelector('.stat-box:nth-child(1) .stat-val');
-        animateValue(orderStat, prevOrders, totalOrders, 800, (v) => Math.floor(v));
-
-        const prevRevenue = totalRevenue;
         totalRevenue += parseFloat((Math.random() * 20 + 10).toFixed(2));
+
+        const orderStat = document.querySelector('.stat-box:nth-child(1) .stat-val');
         const revStat = document.querySelector('.stat-box:nth-child(2) .stat-val');
-        animateValue(revStat, prevRevenue / 1000, totalRevenue / 1000, 1000, (v) => `R$ ${v.toFixed(1)}k`);
+
+        if (orderStat) orderStat.textContent = totalOrders;
+        if (revStat) revStat.textContent = `R$ ${(totalRevenue / 1000).toFixed(1)}k`;
 
         // Cycle through dynamic order database
         const nextOrder = deliveryOrders[deliveryOrderIdx];
@@ -747,12 +703,16 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             const badges = deliveryOrderList.querySelectorAll('.order-status-badge');
             if (badges[0] && badges[0].classList.contains('recebido')) {
-                badges[0].className = 'order-status-badge preparando';
+                badges[0].classList.remove('recebido');
+                badges[0].classList.add('preparando');
                 badges[0].textContent = 'Preparando';
             }
             if (badges[1] && badges[1].classList.contains('preparando')) {
-                badges[1].className = 'order-status-badge entregue';
+                badges[1].classList.remove('preparando');
+                badges[1].classList.add('entregue');
                 badges[1].textContent = 'Entregue';
+                badges[1].style.background = 'rgba(255,255,255,0.05)';
+                badges[1].style.color = 'var(--text-muted)';
             }
         }, 2200);
     };
@@ -760,103 +720,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // Run delivery updates every 4.5 seconds
     setInterval(animateDelivery, 4500);
 
-    // -- AI Agents Flow Mockup Animation (Typing simulation & Status updates) --
+    // -- AI Agents Flow Mockup Animation --
     const iaFlowSteps = document.querySelectorAll('.ia-agent-visual .flow-step');
     let iaStepIdx = 0;
-
-    const iaStepsData = [
-        {
-            subtexts: ["Lead: Rodrigo Santos", "Lead: Camila Ferreira", "Lead: Felipe Nunes", "Lead: Ana Clara"],
-            metaActive: "Capturando...",
-            metaActiveDone: "Capturado",
-            metaInactive: "Inativo"
-        },
-        {
-            subtexts: ["Qualificando: 98.2% intenção", "Qualificando: 94.7% intenção", "Qualificando: 89.1% intenção", "Qualificando: 99.1% intenção"],
-            metaActive: "Processando...",
-            metaActiveDone: "Processado",
-            metaInactive: "Inativo"
-        },
-        {
-            subtexts: ["Agendando Calendly...", "Agendando Calendly...", "Inserindo no Pipefy...", "Enviando email..."],
-            metaActive: "Agendando...",
-            metaActiveDone: "Sucesso",
-            metaInactive: "Inativo"
-        }
-    ];
-
-    const typeText = (element, text, speed = 40, callback) => {
-        if (!element) return;
-        element.innerHTML = '';
-        let i = 0;
-        
-        const cursor = document.createElement('span');
-        cursor.className = 'terminal-cursor';
-        element.appendChild(cursor);
-        
-        const typing = setInterval(() => {
-            if (i < text.length) {
-                element.innerHTML = text.substring(0, i + 1);
-                element.appendChild(cursor);
-                i++;
-            } else {
-                clearInterval(typing);
-                if (callback) callback();
-            }
-        }, speed);
-    };
 
     const animateIAFlow = () => {
         if (!iaFlowSteps || iaFlowSteps.length === 0) return;
 
-        // Reset later steps if restarting cycle
-        if (iaStepIdx === 0) {
-            iaFlowSteps.forEach((step, idx) => {
-                step.classList.remove('active');
-                const meta = step.querySelector('.step-meta');
-                const sub = step.querySelector('.step-subtext');
-                if (meta) {
-                    meta.textContent = iaStepsData[idx].metaInactive;
-                    meta.style.color = '';
-                }
-                if (sub) {
-                    sub.textContent = 'Inativo';
-                }
-            });
-        }
+        iaFlowSteps.forEach(step => step.classList.remove('active'));
 
-        const currentStep = iaFlowSteps[iaStepIdx];
-        currentStep.classList.add('active');
-
-        const meta = currentStep.querySelector('.step-meta');
-        const sub = currentStep.querySelector('.step-subtext');
-        const data = iaStepsData[iaStepIdx];
-
-        // Choose a dynamic content for this cycle
-        const randomChoiceIdx = Math.floor(Math.random() * data.subtexts.length);
-        const selectedSubtext = data.subtexts[randomChoiceIdx];
-
-        if (meta) {
-            meta.textContent = data.metaActive;
-            meta.style.color = 'var(--primary)';
-        }
-
-        typeText(sub, selectedSubtext, 35, () => {
-            if (meta) {
-                meta.textContent = data.metaActiveDone;
-                meta.style.color = iaStepIdx === 2 ? 'var(--primary-light)' : 'var(--primary)';
-            }
-            
-            const cursor = sub.querySelector('.terminal-cursor');
-            if (cursor) cursor.remove();
-        });
+        // Activate current step
+        iaFlowSteps[iaStepIdx].classList.add('active');
 
         // Move to next step or reset
         iaStepIdx = (iaStepIdx + 1) % iaFlowSteps.length;
     };
 
-    // Cycle steps every 3.2 seconds for natural look
-    setInterval(animateIAFlow, 3200);
+    // Cycle steps every 1.8 seconds for an engaging processing loop
+    setInterval(animateIAFlow, 1800);
     animateIAFlow(); // initial run
 
     // -- Custom SaaS Chart Mockup Animation --
@@ -866,55 +747,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!chartBars || chartBars.length === 0) return;
 
         chartBars.forEach(bar => {
+            // Generate subtle fluctuation around the original value
             const randomVal = Math.floor(Math.random() * 30) + 40; // values between 40% and 70%
             bar.style.height = `${randomVal}%`;
         });
     };
 
+    // Fluctuate chart bars every 2.5 seconds
     setInterval(animateChart, 2500);
     animateChart(); // initial run
-
-    // -- Custom SaaS Uptime Gauge Animation --
-    const animateUptimeGauge = () => {
-        const gaugeFill = document.getElementById('uptimeGauge');
-        const gaugeVal = document.getElementById('uptimeValue');
-        if (!gaugeFill || !gaugeVal) return;
-
-        // Reset gauge
-        gaugeFill.style.strokeDashoffset = '251.2';
-        gaugeVal.textContent = '00.0%';
-
-        setTimeout(() => {
-            const targetUptime = 99.98;
-            const circumference = 251.2;
-            
-            const offset = circumference * (1 - targetUptime / 100);
-            gaugeFill.style.strokeDashoffset = offset;
-
-            let currentVal = 0;
-            const duration = 1500; // 1.5s
-            const start = performance.now();
-
-            const step = (timestamp) => {
-                const progress = Math.min((timestamp - start) / duration, 1);
-                currentVal = progress * targetUptime;
-                gaugeVal.textContent = `${currentVal.toFixed(2)}%`;
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }, 150);
-    };
-
-    // Expose gauge animation globally to trigger on tab change
-    window.animateUptimeGauge = animateUptimeGauge;
-    
-    // Trigger gauge once on load if custom pane is already active
-    const activePane = document.querySelector('.sol-pane.active');
-    if (activePane && activePane.getAttribute('id') === 'pane-custom') {
-        animateUptimeGauge();
-    }
 
     // 11. Mobile Touch Feedback System
     // Enables ultra-responsive active states on mobile touch screens

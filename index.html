@@ -446,7 +446,6 @@
 
             <!-- Tab Navigation -->
             <div class="solutions-nav reveal">
-                <div class="tab-slider-indicator"></div>
                 <button class="sol-tab active" data-tab="delivery">Plataforma de Delivery</button>
                 <button class="sol-tab" data-tab="ia">Agentes de IA</button>
                 <button class="sol-tab" data-tab="custom">Software Sob Medida</button>
@@ -581,29 +580,20 @@
                             </div>
                             <div class="mockup-body">
                                 <div class="ia-agent-visual">
-                                    <div class="flow-step" id="ia-step-1">
+                                    <div class="flow-step">
                                         <div class="step-num">1</div>
-                                        <div class="step-content">
-                                            <div class="step-text">Gatilho: Novo lead recebido</div>
-                                            <div class="step-subtext" id="ia-sub-1">Aguardando gatilho...</div>
-                                        </div>
-                                        <span class="step-meta" id="ia-meta-1">Inativo</span>
+                                        <div class="step-text">Gatilho: Novo lead recebido</div>
+                                        <span class="step-meta">Capturado</span>
                                     </div>
-                                    <div class="flow-step" id="ia-step-2">
+                                    <div class="flow-step">
                                         <div class="step-num">2</div>
-                                        <div class="step-content">
-                                            <div class="step-text">IA: Enquadramento & Qualificação</div>
-                                            <div class="step-subtext" id="ia-sub-2">Inativo</div>
-                                        </div>
-                                        <span class="step-meta" id="ia-meta-2">Inativo</span>
+                                        <div class="step-text">IA: Enquadramento & Qualificação</div>
+                                        <span class="step-meta">Processado</span>
                                     </div>
-                                    <div class="flow-step" id="ia-step-3">
+                                    <div class="flow-step">
                                         <div class="step-num">3</div>
-                                        <div class="step-content">
-                                            <div class="step-text">Ação: Agendar Reunião no CRM</div>
-                                            <div class="step-subtext" id="ia-sub-3">Inativo</div>
-                                        </div>
-                                        <span class="step-meta" id="ia-meta-3">Inativo</span>
+                                        <div class="step-text">Ação: Agendar Reunião no CRM</div>
+                                        <span class="step-meta" style="color: var(--primary-light);">Sucesso</span>
                                     </div>
                                 </div>
                             </div>
@@ -661,26 +651,6 @@
                                             <div class="chart-bar" style="height: 60%"></div>
                                             <div class="chart-bar" style="height: 75%"></div>
                                             <div class="chart-bar" style="height: 90%"></div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="system-card uptime-card">
-                                        <div class="sys-header">
-                                            <span class="sys-title">Uptime de APIs</span>
-                                            <span class="sys-tag">Estável</span>
-                                        </div>
-                                        <div class="sys-gauge-container">
-                                            <svg class="gauge-svg" viewBox="0 0 100 100">
-                                                <circle class="gauge-bg" cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="8"></circle>
-                                                <circle class="gauge-fill" id="uptimeGauge" cx="50" cy="50" r="40" fill="none" stroke="url(#gaugeGradient)" stroke-width="8" stroke-dasharray="251.2" stroke-dashoffset="251.2" stroke-linecap="round" transform="rotate(-90 50 50)"></circle>
-                                                <defs>
-                                                    <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                                        <stop offset="0%" stop-color="var(--primary-dark)"></stop>
-                                                        <stop offset="100%" stop-color="var(--primary-light)"></stop>
-                                                    </linearGradient>
-                                                </defs>
-                                            </svg>
-                                            <div class="gauge-value" id="uptimeValue">00.0%</div>
                                         </div>
                                     </div>
                                 </div>
