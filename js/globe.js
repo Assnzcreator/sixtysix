@@ -52,10 +52,11 @@ export function initGlobe() {
         const width = canvas.offsetWidth;
         if (width === 0 || globe) return;
 
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
         globe = createGlobe(canvas, {
-            devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-            width: width,
-            height: width,
+            devicePixelRatio: dpr,
+            width: width * dpr,
+            height: width * dpr,
             phi: 0,
             theta: 0.2,
             dark: 1,

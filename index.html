@@ -24,7 +24,7 @@
     <title>SixtySix | Automação Inteligente & Software Sob Medida</title>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.0">
+    <link rel="stylesheet" href="css/style.css?v=3.1">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -1132,7 +1132,7 @@
     </button>
 
     <!-- Custom Scripts -->
-    <script src="js/main.js?v=3.0"></script>
+    <script src="js/main.js?v=3.1"></script>
     <script type="module">
         import createGlobe from 'https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm';
 
@@ -1225,10 +1225,11 @@
                 const width = canvas.offsetWidth;
                 if (width === 0 || globe) return;
 
+                const dpr = Math.min(window.devicePixelRatio || 1, 2);
                 globe = createGlobe(canvas, {
-                    devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
-                    width: width,
-                    height: width,
+                    devicePixelRatio: dpr,
+                    width: width * dpr,
+                    height: width * dpr,
                     phi: 0,
                     theta: 0.2,
                     dark: 1,
