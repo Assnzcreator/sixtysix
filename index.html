@@ -87,38 +87,19 @@
                     </div>
                 </div>
 
-                <!-- Right Visual: Interactive AI Chatbot Simulator (Telegram/WhatsApp Style) -->
+                <!-- Right Visual: Terminal Animation -->
                 <div class="hero-visual">
-                    <!-- Spline 3D Robot -->
-                    <div class="spline-robot-wrapper" style="width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 10;">
-                        <!-- Using Spline Viewer web component directly for vanilla HTML -->
-                        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.31/build/spline-viewer.js"></script>
-                        <!-- Spline Robot - Mouse tracking enabled -->
-                        <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" style="width: 100%; height: 100%; background: transparent;"></spline-viewer>
-                        
-                        <!-- Fallback visual mask removed because it cuts off the robot -->
-
-                        <script>
-                            // Ocultar a logo do Spline de forma agressiva no Shadow DOM
-                            const hideSplineLogo = setInterval(() => {
-                                const sv = document.querySelector('spline-viewer');
-                                if (sv && sv.shadowRoot) {
-                                    // Adiciona estilo global ao shadow root
-                                    const styleId = 'hide-logo-style';
-                                    if (!sv.shadowRoot.getElementById(styleId)) {
-                                        const style = document.createElement('style');
-                                        style.id = styleId;
-                                        style.textContent = '#logo, a { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; } canvas { opacity: 1 !important; transition: none !important; animation: none !important; filter: none !important; }';
-                                        sv.shadowRoot.appendChild(style);
-                                    }
-                                    
-                                    const logo = sv.shadowRoot.querySelector('#logo');
-                                    if (logo) logo.style.display = 'none';
-                                }
-                            }, 100);
-                            // Mantém a verificação por 15 segundos para garantir que não recarregue
-                            setTimeout(() => clearInterval(hideSplineLogo), 15000);
-                        </script>
+                    <div class="terminal-mockup">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-title">sixtysix-ai-agent</div>
+                        </div>
+                        <div class="terminal-body" id="terminal-body">
+                        </div>
                     </div>
                 </div>
 
@@ -1327,6 +1308,40 @@
         } else {
             initGlobe();
         }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const lines = [
+                { text: "> Inicializando SixtySix AI Engine v3.0...", type: "system", delay: 800 },
+                { text: "Conectando ao ERP do cliente...", type: "info", delay: 1200 },
+                { text: "Acesso autorizado. Sincronizando dados...", type: "success", delay: 1800 },
+                { text: "Lendo solicitações pendentes (45 novos chamados)", type: "warning", delay: 2500 },
+                { text: "> Agente autônomo assumindo o controle.", type: "system", delay: 3000 },
+                { text: "Resolvendo chamado #1042: Atendimento automático", type: "info", delay: 3800 },
+                { text: "Resposta enviada no WhatsApp. Ticket finalizado.", type: "success", delay: 4500 },
+                { text: "Aguardando novos eventos...", type: "info", delay: 5500 }
+            ];
+
+            const terminalBody = document.getElementById("terminal-body");
+            if(!terminalBody) return;
+
+            let cursor = document.createElement("span");
+            cursor.className = "terminal-cursor";
+
+            let currentDelay = 0;
+            lines.forEach(line => {
+                setTimeout(() => {
+                    const p = document.createElement("div");
+                    p.className = `terminal-line ${line.type}`;
+                    p.textContent = line.text;
+                    
+                    terminalBody.insertBefore(p, cursor);
+                    terminalBody.scrollTop = terminalBody.scrollHeight;
+                }, line.delay);
+            });
+            
+            terminalBody.appendChild(cursor);
+        });
     </script>
 </body>
 </html>
