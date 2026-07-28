@@ -24,7 +24,7 @@
     <title>SixtySix | Automação Inteligente & Software Sob Medida</title>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.3">
+    <link rel="stylesheet" href="css/style.css?v=3.4">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -89,8 +89,40 @@
 
                 <!-- Right Visual: Terminal Animation -->
                 <div class="hero-visual">
-                    <div class="terminal-mockup">
+                    <div class="terminal-mockup ghost-cli-style">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-title">SIXTYSIX — CLI</div>
+                            <div class="terminal-status">ONLINE</div>
+                        </div>
+                        
+                        <div class="terminal-tabs">
+                            <div class="tab active">
+                                <i data-lucide="bot" style="width: 14px; height: 14px;"></i>
+                                SixtySix AI
+                                <span class="badge">EM DESTAQUE</span>
+                            </div>
+                            <div class="tab">
+                                <i data-lucide="cpu" style="width: 14px; height: 14px;"></i>
+                                Automação
+                            </div>
+                            <div class="tab">
+                                <i data-lucide="terminal-square" style="width: 14px; height: 14px;"></i>
+                                cURL
+                            </div>
+                        </div>
+
                         <div class="terminal-body" id="terminal-body">
+                            <!-- JS will populate this -->
+                        </div>
+                        
+                        <div class="terminal-footer">
+                            <span>? for shortcuts</span>
+                            <span>Thinking off (tab to toggle)</span>
                         </div>
                     </div>
                 </div>
@@ -1304,36 +1336,73 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const lines = [
-                { text: "Inicializando SixtySix AI Engine v3.0...", type: "system", delay: 800 },
-                { text: "Conectando ao ERP do cliente...", type: "info", delay: 1200 },
-                { text: "Acesso autorizado. Sincronizando dados...", type: "success", delay: 1800 },
-                { text: "Lendo solicitações pendentes (45 novos chamados)", type: "warning", delay: 2500 },
-                { text: "Agente autônomo assumindo o controle.", type: "system", delay: 3000 },
-                { text: "Resolvendo chamado #1042: Atendimento automático", type: "info", delay: 3800 },
-                { text: "Resposta enviada no WhatsApp. Ticket finalizado.", type: "success", delay: 4500 },
-                { text: "Aguardando novos eventos...", type: "info", delay: 5500 }
-            ];
-
             const terminalBody = document.getElementById("terminal-body");
             if(!terminalBody) return;
 
-            let cursor = document.createElement("span");
-            cursor.className = "terminal-cursor";
+            const welcomeBox = `
+                <div class="ghost-welcome-box">
+                    <div class="ghost-version">SixtySix AI v3.0.2</div>
+                    <div class="ghost-title">Welcome back!</div>
+                    <div class="ghost-pixel-art">
+                        <!-- Simple pixel art alien using blocks -->
+                        <div class="pixel-row">  ██  ██  </div>
+                        <div class="pixel-row">██████████</div>
+                        <div class="pixel-row">███  ███</div>
+                        <div class="pixel-row">██████████</div>
+                        <div class="pixel-row">  █  █  █  </div>
+                        <div class="pixel-row">  █      █  </div>
+                    </div>
+                    <div class="ghost-subtitle">SixtySix Engine 5 · AI Worker Pro</div>
+                    <div class="ghost-path">~/projects/automations</div>
+                </div>
+                <div class="ghost-side-text">
+                    <div class="ghost-side-title">Tips for getting started</div>
+                    <div class="ghost-side-desc">Run /init to create a WORKFLOW.md</div>
+                    <div class="ghost-side-title" style="margin-top: 15px;">Recent activity</div>
+                    <div class="ghost-side-desc">No recent activity</div>
+                </div>
+            `;
 
-            let currentDelay = 0;
-            lines.forEach(line => {
-                setTimeout(() => {
-                    const p = document.createElement("div");
-                    p.className = `terminal-line ${line.type}`;
-                    p.textContent = line.text;
-                    
-                    terminalBody.insertBefore(p, cursor);
-                    terminalBody.scrollTop = terminalBody.scrollHeight;
-                }, line.delay);
-            });
-            
-            terminalBody.appendChild(cursor);
+            terminalBody.innerHTML = `
+                <div class="ghost-top-section">
+                    ${welcomeBox}
+                </div>
+                <div class="ghost-input-box" id="ghost-input-box">
+                    <span class="ghost-prompt">&gt;</span> <span id="ghost-typewriter"></span><span class="ghost-cursor"></span>
+                </div>
+                <div id="ghost-execution-area"></div>
+            `;
+
+            const typeText = "escreve uma automação que atende e registra clientes no CRM";
+            const typewriter = document.getElementById("ghost-typewriter");
+            const executionArea = document.getElementById("ghost-execution-area");
+            let i = 0;
+
+            function typeWriter() {
+                if (i < typeText.length) {
+                    typewriter.innerHTML += typeText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    setTimeout(showExecution, 500);
+                }
+            }
+
+            function showExecution() {
+                const cursor = document.querySelector('.ghost-cursor');
+                if(cursor) cursor.style.display = 'none';
+
+                executionArea.innerHTML = `
+                    <div class="ghost-exec-line">
+                        <span class="ghost-bullet">●</span> <span class="ghost-action">Write(crm_agent.py)</span>
+                    </div>
+                    <div class="ghost-exec-detail">
+                        <span class="ghost-tree">└</span> <span class="ghost-detail-text">Wrote 128 lines to crm_agent.py</span>
+                    </div>
+                `;
+            }
+
+            setTimeout(typeWriter, 1000);
         });
     </script>
 </body>
