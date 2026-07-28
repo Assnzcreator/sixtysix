@@ -43,6 +43,7 @@
                 <a href="#solucoes" class="nav-link">Soluções</a>
                 <a href="#processo" class="nav-link">Como Trabalhamos</a>
                 <a href="#sobre" class="nav-link">Sobre Nós</a>
+                <a href="#atendimento" class="nav-link">Onde Atendemos</a>
                 <a href="#contato" class="nav-link">Contato</a>
             </nav>
             
@@ -87,44 +88,37 @@
                 </div>
 
                 <!-- Right Visual: Interactive AI Chatbot Simulator (Telegram/WhatsApp Style) -->
-                <div class="hero-visual reveal reveal-delay-2">
-                    <div class="agent-chat-window">
-                        <div class="chat-header">
-                            <div class="chat-header-info">
-                                <div class="chat-avatar">
-                                    <div class="chat-avatar-glow"></div>
-                                    <i data-lucide="bot" style="width: 16px; height: 16px; color: var(--primary);"></i>
-                                </div>
-                                <div class="chat-user-details">
-                                    <span class="chat-username">SixtySix AI</span>
-                                    <span class="chat-status"><span class="status-dot"></span>Online</span>
-                                </div>
-                            </div>
-                            <div class="chat-header-actions">
-                                <i data-lucide="phone" class="chat-icon"></i>
-                                <i data-lucide="video" class="chat-icon"></i>
-                                <i data-lucide="more-vertical" class="chat-icon"></i>
-                            </div>
-                        </div>
-                        <div class="chat-body" id="chatBody">
-                            <div class="chat-system-badge">
-                                <span>Hoje</span>
-                            </div>
-                            <div class="chat-system-badge">
-                                <span>[SIXTYSIX-CHAT] Agente de atendimento ativo na API WhatsApp.</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Floating Agent Card -->
-                    <div class="agent-card-float">
-                        <div class="agent-avatar">
-                            <i data-lucide="cpu" style="width: 16px; height: 16px;"></i>
-                        </div>
-                        <div class="agent-info">
-                            <div class="agent-name">Assistente Autônomo</div>
-                            <div class="agent-status">Executando fluxos</div>
-                        </div>
+                <div class="hero-visual">
+                    <!-- Spline 3D Robot -->
+                    <div class="spline-robot-wrapper" style="width: 100%; height: 500px; display: flex; align-items: center; justify-content: center; position: relative; z-index: 10;">
+                        <!-- Using Spline Viewer web component directly for vanilla HTML -->
+                        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.31/build/spline-viewer.js"></script>
+                        <!-- Spline Robot - Mouse tracking enabled -->
+                        <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" style="width: 100%; height: 100%; background: transparent;"></spline-viewer>
+                        
+                        <!-- Fallback visual mask removed because it cuts off the robot -->
+
+                        <script>
+                            // Ocultar a logo do Spline de forma agressiva no Shadow DOM
+                            const hideSplineLogo = setInterval(() => {
+                                const sv = document.querySelector('spline-viewer');
+                                if (sv && sv.shadowRoot) {
+                                    // Adiciona estilo global ao shadow root
+                                    const styleId = 'hide-logo-style';
+                                    if (!sv.shadowRoot.getElementById(styleId)) {
+                                        const style = document.createElement('style');
+                                        style.id = styleId;
+                                        style.textContent = '#logo, a { display: none !important; opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; } canvas { opacity: 1 !important; transition: none !important; animation: none !important; filter: none !important; }';
+                                        sv.shadowRoot.appendChild(style);
+                                    }
+                                    
+                                    const logo = sv.shadowRoot.querySelector('#logo');
+                                    if (logo) logo.style.display = 'none';
+                                }
+                            }, 100);
+                            // Mantém a verificação por 15 segundos para garantir que não recarregue
+                            setTimeout(() => clearInterval(hideSplineLogo), 15000);
+                        </script>
                     </div>
                 </div>
 
@@ -446,8 +440,8 @@
 
             <!-- Tab Navigation -->
             <div class="solutions-nav reveal">
-                <button class="sol-tab active" data-tab="delivery">Plataforma de Delivery</button>
-                <button class="sol-tab" data-tab="ia">Agentes de IA</button>
+                <button class="sol-tab active" data-tab="ia">Agentes de IA</button>
+                <button class="sol-tab" data-tab="delivery">Plataforma de Delivery</button>
                 <button class="sol-tab" data-tab="custom">Software Sob Medida</button>
             </div>
 
@@ -455,7 +449,7 @@
             <div class="sol-content-wrapper reveal reveal-delay-1">
                 
                 <!-- Pane 1: Delivery Platform -->
-                <div class="sol-pane active" id="pane-delivery">
+                <div class="sol-pane" id="pane-delivery">
                     <div class="sol-details">
                         <h3 class="sol-title">Plataforma de Delivery Completa</h3>
                         <p class="sol-description">
@@ -543,7 +537,7 @@
                 </div>
 
                 <!-- Pane 2: AI Agents -->
-                <div class="sol-pane" id="pane-ia">
+                <div class="sol-pane active" id="pane-ia">
                     <div class="sol-details">
                         <h3 class="sol-title">Automações com Agentes de IA</h3>
                         <p class="sol-description">
@@ -571,31 +565,42 @@
                     </div>
                     
                     <div class="sol-visual-container">
-                        <div class="app-mockup" style="max-width: 480px; width: 100%;">
-                            <div class="mockup-header">
-                                <span class="mockup-dot"></span>
-                                <span class="mockup-dot"></span>
-                                <span class="mockup-dot"></span>
-                                <span class="mockup-title">fluxo_agente_ia.exec</span>
-                            </div>
-                            <div class="mockup-body">
-                                <div class="ia-agent-visual">
-                                    <div class="flow-step">
-                                        <div class="step-num">1</div>
-                                        <div class="step-text">Gatilho: Novo lead recebido</div>
-                                        <span class="step-meta">Capturado</span>
+                        <div class="agent-chat-window" style="max-width: 480px; width: 100%; margin: 0 auto; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                            <div class="chat-header">
+                                <div class="chat-header-info">
+                                    <div class="chat-avatar">
+                                        <div class="chat-avatar-glow"></div>
+                                        <i data-lucide="bot" style="width: 16px; height: 16px; color: var(--primary);"></i>
                                     </div>
-                                    <div class="flow-step">
-                                        <div class="step-num">2</div>
-                                        <div class="step-text">IA: Enquadramento & Qualificação</div>
-                                        <span class="step-meta">Processado</span>
-                                    </div>
-                                    <div class="flow-step">
-                                        <div class="step-num">3</div>
-                                        <div class="step-text">Ação: Agendar Reunião no CRM</div>
-                                        <span class="step-meta" style="color: var(--primary-light);">Sucesso</span>
+                                    <div class="chat-user-details">
+                                        <span class="chat-username">SixtySix AI</span>
+                                        <span class="chat-status"><span class="status-dot"></span>Online</span>
                                     </div>
                                 </div>
+                                <div class="chat-header-actions">
+                                    <i data-lucide="phone" class="chat-icon"></i>
+                                    <i data-lucide="video" class="chat-icon"></i>
+                                    <i data-lucide="more-vertical" class="chat-icon"></i>
+                                </div>
+                            </div>
+                            <div class="chat-body" id="chatBody">
+                                <div class="chat-system-badge">
+                                    <span>Hoje</span>
+                                </div>
+                                <div class="chat-system-badge">
+                                    <span>[SIXTYSIX-CHAT] Agente de atendimento ativo na API WhatsApp.</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Agent Card -->
+                        <div class="agent-card-float" style="right: 5%; bottom: -20px;">
+                            <div class="agent-avatar">
+                                <i data-lucide="cpu" style="width: 16px; height: 16px;"></i>
+                            </div>
+                            <div class="agent-info">
+                                <div class="agent-name">Assistente Autônomo</div>
+                                <div class="agent-status">Executando fluxos</div>
                             </div>
                         </div>
                     </div>
@@ -909,6 +914,40 @@
         </div>
     </section>
 
+    <!-- Service Area Section -->
+    <section class="service-area section-padding" id="atendimento">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-tag">Alcance Global</span>
+                <h2 class="section-title">Para Onde <span class="sketch-highlight">Atendemos<svg class="sketch-svg" viewBox="0 0 150 50" preserveAspectRatio="none"><path d="M 5 25 C 20 5, 130 0, 145 20 C 150 35, 20 48, 8 45 C 2 43, 5 30, 25 22" stroke="var(--primary-light)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></h2>
+                <p class="section-desc">Atuamos de forma 100% digital e remota, entregando tecnologia de ponta para empresas em qualquer lugar do mundo.</p>
+            </div>
+            
+            <div class="globe-wrapper" style="position: relative; max-width: 500px; margin: 40px auto 0; aspect-ratio: 1; user-select: none;">
+                <style>
+                    @keyframes pulse-expand {
+                        0% { transform: scale(0.3); opacity: 0.8; }
+                        100% { transform: scale(1.5); opacity: 0; }
+                    }
+                </style>
+                
+                <canvas id="cobeCanvas" style="position: relative; z-index: 1; width: 100%; height: 100%; cursor: grab; opacity: 0; transition: opacity 1.2s ease; border-radius: 50%; touch-action: none;"></canvas>
+                
+                <!-- Logo positioned over the globe as a hologram -->
+                <img src="./logo.png" alt="SixtySix Core" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 180px; z-index: 2; opacity: 0.15; filter: drop-shadow(0 0 20px #33ccdd); pointer-events: none; mix-blend-mode: screen;">
+                
+                <div id="globe-markers" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3;"></div>
+            </div>
+            
+            <!-- Catchphrase below the globe -->
+            <div style="text-align: center; margin-top: 2rem; position: relative; z-index: 10;">
+                <h3 style="font-size: 1.5rem; font-weight: 600; color: #fff; letter-spacing: 0.5px;">
+                    <span class="gradient-text">Em todo lugar, a todo momento.</span>
+                </h3>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact & Final CTA Section -->
     <section class="contact section-padding" id="contato">
         <div class="container">
@@ -1113,5 +1152,181 @@
 
     <!-- Custom Scripts -->
     <script src="js/main.js?v=3.0"></script>
+    <script type="module">
+        import createGlobe from 'https://cdn.jsdelivr.net/npm/cobe@0.6.3/+esm';
+
+        function initGlobe() {
+            const canvas = document.getElementById('cobeCanvas');
+            const markersContainer = document.getElementById('globe-markers');
+            if (!canvas || !markersContainer) return;
+
+            const cities = [
+                { location: [-23.55, -46.63], size: 0.05, delay: 0 }, // São Paulo
+                { location: [40.71, -74.01], size: 0.05, delay: 0.5 }, // Nova York
+                { location: [25.76, -80.19], size: 0.05, delay: 1 }, // Miami
+                { location: [-25.42, -49.27], size: 0.05, delay: 1.5 }, // Curitiba
+                { location: [30.26, -97.74], size: 0.05, delay: 2 } // Austin
+            ];
+
+            const markerElements = [];
+            cities.forEach(city => {
+                const el = document.createElement('div');
+                el.style.position = 'absolute';
+                el.style.width = '40px';
+                el.style.height = '40px';
+                el.style.display = 'flex';
+                el.style.alignItems = 'center';
+                el.style.justifyContent = 'center';
+                el.style.pointerEvents = 'none';
+                el.style.opacity = '0';
+                el.style.transition = 'opacity 0.4s, filter 0.4s';
+                el.style.top = '0';
+                el.style.left = '0';
+                el.style.transform = 'translate(-50%, -50%)';
+                
+                // HTML structure for pulses exactly like 21st.dev
+                el.innerHTML = `
+                    <span style="position: absolute; inset: 0; border: 2px solid #33ccdd; border-radius: 50%; opacity: 0; animation: pulse-expand 2s ease-out infinite ${city.delay}s;"></span>
+                    <span style="position: absolute; inset: 0; border: 2px solid #33ccdd; border-radius: 50%; opacity: 0; animation: pulse-expand 2s ease-out infinite ${city.delay + 0.5}s;"></span>
+                    <span style="width: 10px; height: 10px; background: #33ccdd; border-radius: 50%; box-shadow: 0 0 0 3px #111, 0 0 0 5px #33ccdd;"></span>
+                `;
+                
+                markersContainer.appendChild(el);
+                
+                // Convert lat/lon to radians
+                const latRad = city.location[0] * Math.PI / 180;
+                const lonRad = city.location[1] * Math.PI / 180; 
+                // Base cartesian standard
+                const x = Math.cos(latRad) * Math.sin(lonRad);
+                const y = Math.sin(latRad);
+                const z = Math.cos(latRad) * Math.cos(lonRad);
+                
+                markerElements.push({ el, x, y, z });
+            });
+
+            let pointerInteracting = null;
+            let pointerInteractionMovement = { phi: 0, theta: 0 };
+            let phiOffset = 0;
+            let thetaOffset = 0;
+            let isPaused = false;
+            let currentPhi = 0;
+            const speed = 0.003;
+
+            canvas.addEventListener('pointerdown', (e) => {
+                pointerInteracting = { x: e.clientX, y: e.clientY };
+                canvas.style.cursor = 'grabbing';
+                isPaused = true;
+            });
+
+            window.addEventListener('pointerup', () => {
+                if (pointerInteracting !== null) {
+                    phiOffset += pointerInteractionMovement.phi;
+                    thetaOffset += pointerInteractionMovement.theta;
+                    pointerInteractionMovement = { phi: 0, theta: 0 };
+                }
+                pointerInteracting = null;
+                canvas.style.cursor = 'grab';
+                isPaused = false;
+            });
+
+            window.addEventListener('pointermove', (e) => {
+                if (pointerInteracting !== null) {
+                    pointerInteractionMovement = {
+                        phi: (e.clientX - pointerInteracting.x) / 300,
+                        theta: (e.clientY - pointerInteracting.y) / 1000,
+                    };
+                }
+            });
+
+            let globe = null;
+
+            function init() {
+                const width = canvas.offsetWidth;
+                if (width === 0 || globe) return;
+
+                globe = createGlobe(canvas, {
+                    devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+                    width: width,
+                    height: width,
+                    phi: 0,
+                    theta: 0.2,
+                    dark: 1,
+                    diffuse: 1.5,
+                    mapSamples: 16000,
+                    mapBrightness: 10,
+                    baseColor: [0.1, 0.1, 0.1],
+                    markerColor: [0.2, 0.8, 0.9],
+                    glowColor: [0.05, 0.05, 0.05],
+                    markerElevation: 0,
+                    // We don't need cobe's native markers anymore because we are drawing the HTML ones!
+                    markers: [],
+                    arcs: [],
+                    arcColor: [0.3, 0.85, 0.95],
+                    arcWidth: 0.5,
+                    arcHeight: 0.25,
+                    opacity: 0.7,
+                    onRender: (state) => {
+                        if (!isPaused) {
+                            currentPhi += speed;
+                        }
+                        const phi = currentPhi + phiOffset + pointerInteractionMovement.phi;
+                        const theta = 0.2 + thetaOffset + pointerInteractionMovement.theta;
+                        state.phi = phi;
+                        state.theta = theta;
+
+                        // Project HTML markers
+                        const R = width / 2;
+                        
+                        // Cobe's internal render offset for front view is Math.PI
+                        const realPhi = phi + Math.PI; 
+                        
+                        markerElements.forEach(item => {
+                            // Rotate by phi (Y axis)
+                            const x1 = item.x * Math.cos(realPhi) + item.z * Math.sin(realPhi);
+                            const z1 = -item.x * Math.sin(realPhi) + item.z * Math.cos(realPhi);
+                            
+                            // Rotate by theta (X axis)
+                            const y2 = item.y * Math.cos(theta) - z1 * Math.sin(theta);
+                            const z2 = item.y * Math.sin(theta) + z1 * Math.cos(theta);
+
+                            // Hide if on the back of the globe (cobe scale is 1, so z > 0 is front)
+                            if (z2 < 0) {
+                                item.el.style.opacity = '0';
+                                item.el.style.filter = 'blur(8px)';
+                            } else {
+                                item.el.style.opacity = '1';
+                                item.el.style.filter = 'blur(0px)';
+                                const screenX = R + x1 * R;
+                                const screenY = R - y2 * R;
+                                item.el.style.transform = `translate(-50%, -50%) translate(${screenX}px, ${screenY}px)`;
+                            }
+                        });
+                    }
+                });
+
+                setTimeout(() => {
+                    canvas.style.opacity = '1';
+                }, 100);
+            }
+
+            if (canvas.offsetWidth > 0) {
+                init();
+            } else {
+                const ro = new ResizeObserver((entries) => {
+                    if (entries[0]?.contentRect.width > 0) {
+                        ro.disconnect();
+                        init();
+                    }
+                });
+                ro.observe(canvas);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGlobe);
+        } else {
+            initGlobe();
+        }
+    </script>
 </body>
 </html>
