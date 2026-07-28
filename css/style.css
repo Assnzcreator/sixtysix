@@ -2717,61 +2717,24 @@ textarea.form-control {
     }
 }
 
-/* Terminal Mockup */
+/* Terminal Mockup - Claude Code Style */
 .terminal-mockup {
     width: 100%;
     max-width: 500px;
-    background: rgba(15, 15, 20, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background: #111111;
+    border: 1px solid #333333;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
     margin: 0 auto;
     font-family: 'Fira Code', 'Consolas', 'Courier New', monospace;
-    transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.terminal-mockup:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-}
-
-.terminal-header {
-    display: flex;
-    align-items: center;
-    padding: 14px 16px;
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-.terminal-dots {
-    display: flex;
-    gap: 8px;
-}
-.terminal-dots .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-}
-.terminal-dots .dot.red { background: #ff5f56; }
-.terminal-dots .dot.yellow { background: #ffbd2e; }
-.terminal-dots .dot.green { background: #27c93f; }
-.terminal-title {
-    flex-grow: 1;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-right: 44px;
-    letter-spacing: 0.5px;
-}
 .terminal-body {
     padding: 24px;
     height: 280px;
     overflow-y: auto;
-    color: #a9b1d6;
+    color: #e5e5e5;
     font-size: 0.9rem;
     line-height: 1.6;
     text-align: left;
@@ -2780,29 +2743,43 @@ textarea.form-control {
     width: 6px;
 }
 .terminal-body::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
+    background: #333333;
     border-radius: 4px;
 }
 .terminal-line {
     margin-bottom: 8px;
     opacity: 0;
-    animation: fadeInTerm 0.3s forwards;
+    animation: fadeInTerm 0.2s forwards;
+    display: flex;
+    align-items: flex-start;
+}
+.terminal-line::before {
+    content: "❯";
+    color: #555;
+    margin-right: 12px;
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+.terminal-line.system::before {
+    content: "●";
+    color: #d97757;
 }
 @keyframes fadeInTerm {
     to { opacity: 1; }
 }
-.terminal-line.success { color: #9ece6a; }
-.terminal-line.info { color: #7aa2f7; }
-.terminal-line.warning { color: #e0af68; }
-.terminal-line.system { color: #bb9af7; font-weight: 600; }
+.terminal-line.success { color: #879977; }
+.terminal-line.info { color: #a3b8cc; }
+.terminal-line.warning { color: #c4a77d; }
+.terminal-line.system { color: #d97757; font-weight: normal; }
 .terminal-cursor {
     display: inline-block;
     width: 8px;
     height: 16px;
-    background: #a9b1d6;
+    background: #888888;
     vertical-align: middle;
     animation: blinkCursor 1s step-end infinite;
-    margin-left: 4px;
+    margin-left: 12px;
+    margin-top: 4px;
 }
 @keyframes blinkCursor {
     0%, 100% { opacity: 1; }
