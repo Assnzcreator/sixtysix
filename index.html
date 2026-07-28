@@ -24,7 +24,7 @@
     <title>SixtySix | Automação Inteligente & Software Sob Medida</title>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.4">
+    <link rel="stylesheet" href="css/style.css?v=3.5">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -1344,13 +1344,12 @@
                     <div class="ghost-version">SixtySix AI v3.0.2</div>
                     <div class="ghost-title">Welcome back!</div>
                     <div class="ghost-pixel-art">
-                        <!-- Simple pixel art alien using blocks -->
-                        <div class="pixel-row">  ██  ██  </div>
-                        <div class="pixel-row">██████████</div>
-                        <div class="pixel-row">███  ███</div>
-                        <div class="pixel-row">██████████</div>
-                        <div class="pixel-row">  █  █  █  </div>
-                        <div class="pixel-row">  █      █  </div>
+                        <!-- '66' pixel art -->
+                        <div class="pixel-row">  ████     ████  </div>
+                        <div class="pixel-row"> ██       ██      </div>
+                        <div class="pixel-row"> █████    █████  </div>
+                        <div class="pixel-row"> ██  ██   ██  ██ </div>
+                        <div class="pixel-row">  ████     ████  </div>
                     </div>
                     <div class="ghost-subtitle">SixtySix Engine 5 · AI Worker Pro</div>
                     <div class="ghost-path">~/projects/automations</div>
@@ -1373,15 +1372,64 @@
                 <div id="ghost-execution-area"></div>
             `;
 
-            const typeText = "escreve uma automação que atende e registra clientes no CRM";
+            const commands = [
+                {
+                    cmd: "escreve uma automação que atende e registra clientes no CRM",
+                    output: `
+                        <div class="ghost-exec-line">
+                            <span class="ghost-bullet">●</span> <span class="ghost-action">Write(crm_agent.py)</span>
+                        </div>
+                        <div class="ghost-exec-detail">
+                            <span class="ghost-tree">└</span> <span class="ghost-detail-text">Wrote 128 lines to crm_agent.py</span>
+                        </div>
+                    `
+                },
+                {
+                    cmd: "conecta o banco de dados e cria um painel de faturamento",
+                    output: `
+                        <div class="ghost-exec-line">
+                            <span class="ghost-bullet">●</span> <span class="ghost-action">Execute(db_connect.sh)</span>
+                        </div>
+                        <div class="ghost-exec-detail">
+                            <span class="ghost-tree">├</span> <span class="ghost-detail-text">Connected to PostgreSQL</span>
+                        </div>
+                        <div class="ghost-exec-detail">
+                            <span class="ghost-tree">└</span> <span class="ghost-detail-text">Generated dashboard_view.tsx (45 lines)</span>
+                        </div>
+                    `
+                },
+                {
+                    cmd: "analisa os logs do sistema em busca de erros 500",
+                    output: `
+                        <div class="ghost-exec-line">
+                            <span class="ghost-bullet">●</span> <span class="ghost-action">Read(server_logs.txt)</span>
+                        </div>
+                        <div class="ghost-exec-detail">
+                            <span class="ghost-tree">└</span> <span class="ghost-detail-text">Found 0 critical errors. System stable.</span>
+                        </div>
+                    `
+                }
+            ];
+
             const typewriter = document.getElementById("ghost-typewriter");
             const executionArea = document.getElementById("ghost-execution-area");
-            let i = 0;
+            const cursor = document.querySelector('.ghost-cursor');
+            let currentCmdIndex = 0;
+            let charIndex = 0;
+
+            function startAnimation() {
+                typewriter.innerHTML = "";
+                executionArea.innerHTML = "";
+                if(cursor) cursor.style.display = 'inline-block';
+                charIndex = 0;
+                setTimeout(typeWriter, 1000);
+            }
 
             function typeWriter() {
-                if (i < typeText.length) {
-                    typewriter.innerHTML += typeText.charAt(i);
-                    i++;
+                const currentCmd = commands[currentCmdIndex].cmd;
+                if (charIndex < currentCmd.length) {
+                    typewriter.innerHTML += currentCmd.charAt(charIndex);
+                    charIndex++;
                     setTimeout(typeWriter, 50);
                 } else {
                     setTimeout(showExecution, 500);
@@ -1389,20 +1437,16 @@
             }
 
             function showExecution() {
-                const cursor = document.querySelector('.ghost-cursor');
                 if(cursor) cursor.style.display = 'none';
-
-                executionArea.innerHTML = `
-                    <div class="ghost-exec-line">
-                        <span class="ghost-bullet">●</span> <span class="ghost-action">Write(crm_agent.py)</span>
-                    </div>
-                    <div class="ghost-exec-detail">
-                        <span class="ghost-tree">└</span> <span class="ghost-detail-text">Wrote 128 lines to crm_agent.py</span>
-                    </div>
-                `;
+                executionArea.innerHTML = commands[currentCmdIndex].output;
+                
+                setTimeout(() => {
+                    currentCmdIndex = (currentCmdIndex + 1) % commands.length;
+                    startAnimation();
+                }, 4000);
             }
 
-            setTimeout(typeWriter, 1000);
+            startAnimation();
         });
     </script>
 </body>
