@@ -2823,6 +2823,16 @@ textarea.form-control {
     display: flex;
     flex-direction: column;
 }
+.ghost-cli-style .terminal-body::-webkit-scrollbar {
+    width: 6px;
+}
+.ghost-cli-style .terminal-body::-webkit-scrollbar-thumb {
+    background: #2a2b32;
+    border-radius: 4px;
+}
+.ghost-cli-style .terminal-body::-webkit-scrollbar-track {
+    background: transparent;
+}
 
 .ghost-top-section {
     display: flex;
