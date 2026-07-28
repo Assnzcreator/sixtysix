@@ -24,7 +24,7 @@
     <title>SixtySix | Automação Inteligente & Software Sob Medida</title>
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="css/style.css?v=3.6">
+    <link rel="stylesheet" href="css/style.css?v=3.7">
 </head>
 <body>
     <!-- Scroll Progress Bar -->
@@ -114,11 +114,6 @@
 
                         <div class="terminal-body" id="terminal-body">
                             <!-- JS will populate this -->
-                        </div>
-                        
-                        <div class="terminal-footer">
-                            <span>? for shortcuts</span>
-                            <span>Thinking off (tab to toggle)</span>
                         </div>
                     </div>
                 </div>
@@ -1366,7 +1361,24 @@
                     <span class="ghost-prompt">&gt;</span> <span id="ghost-typewriter"></span><span class="ghost-cursor"></span>
                 </div>
                 <div id="ghost-execution-area"></div>
+                
+                <div class="terminal-footer">
+                    <span>? for shortcuts</span>
+                    <span>Thinking off (tab to toggle)</span>
+                </div>
             `;
+
+            const terminalMockup = document.querySelector('.terminal-mockup.ghost-cli-style');
+            if (terminalMockup && !document.querySelector('.terminal-subfooter')) {
+                const subFooter = document.createElement('div');
+                subFooter.className = 'terminal-subfooter';
+                subFooter.innerHTML = `
+                    <span class="subfooter-label">MODELO</span>
+                    <span class="subfooter-model active">SixtySix v5</span>
+                    <span class="subfooter-model">SixtySix Mini</span>
+                `;
+                terminalMockup.appendChild(subFooter);
+            }
 
             const commands = [
                 {
