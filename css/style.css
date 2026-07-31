@@ -2802,12 +2802,12 @@ textarea.form-control {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #33ccdd;
+    background: var(--primary);
 }
 .ghost-cli-style .tab .badge {
     font-size: 0.6rem;
-    background: rgba(51, 204, 221, 0.15);
-    color: #33ccdd;
+    background: rgba(0, 217, 139, 0.15);
+    color: var(--primary);
     padding: 2px 6px;
     border-radius: 4px;
     font-weight: 700;
@@ -2842,16 +2842,16 @@ textarea.form-control {
 
 .ghost-welcome-box {
     flex: 1;
-    border: 1px solid #33ccdd;
+    border: 1px solid var(--primary);
     border-radius: 8px;
     padding: 24px 20px;
     text-align: center;
-    background: rgba(51, 204, 221, 0.04);
+    background: rgba(0, 217, 139, 0.04);
     position: relative;
     margin-top: 15px;
 }
 .ghost-version {
-    color: #33ccdd;
+    color: var(--primary);
     font-size: 0.8rem;
     font-weight: 600;
     margin-bottom: 15px;
@@ -2863,13 +2863,13 @@ textarea.form-control {
     margin: 0;
 }
 .ghost-title {
-    color: #33ccdd;
+    color: var(--primary);
     font-size: 1.1rem;
     font-weight: 700;
     margin-bottom: 20px;
 }
 .ghost-pixel-art {
-    color: #33ccdd;
+    color: var(--primary);
     font-size: 8px;
     line-height: 8px;
     margin: 0 auto 20px auto;
@@ -2894,7 +2894,7 @@ textarea.form-control {
     padding-top: 10px;
 }
 .ghost-side-title {
-    color: #33ccdd;
+    color: var(--primary);
     font-weight: 600;
     margin-bottom: 8px;
 }
@@ -2911,7 +2911,7 @@ textarea.form-control {
     color: #e5e7eb;
 }
 .ghost-prompt {
-    color: #33ccdd;
+    color: var(--primary);
     font-weight: bold;
     margin-right: 8px;
 }
@@ -2985,6 +2985,6 @@ textarea.form-control {
 }
 .subfooter-model.active {
     color: #e5e7eb;
-    border-color: #33ccdd;
+    border-color: var(--primary);
 }
 
