@@ -2988,3 +2988,4 @@ textarea.form-control {
     border-color: var(--primary);
 }
 
+@media (max-width: 768px) { .ghost-top-section { flex-direction: column; gap: 12px; } .ghost-side-text { display: none; } .ghost-cli-style .terminal-body { padding: 16px; } .ghost-pixel-art img { width: 90px !important; } }
